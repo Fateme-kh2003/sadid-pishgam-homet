@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #0F172A;
+  --color-secondary: #FACC15;
+  --color-background: #F8FAFC;
+  --color-text: #1E293B;
+  --color-white: #FFFFFF;
+}
+
+html {
+  direction: rtl;
+}

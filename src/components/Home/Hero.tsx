@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import panel from "../../assets/Panel.jpg";
 import panel2 from "../../assets/Panel2.png";
 import dorbin from "../../assets/Dorbin.jpg";
+import Button from "../Ui/Button";
 
 const Hero = () => {
   return (
@@ -28,13 +29,11 @@ const Hero = () => {
             </p>
 
             <div className="flex gap-4">
-              <button className="rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:opacity-90 hover:cursor-pointer hover:bg-amber-400">
-                مشاوره رایگان
-              </button>
-
-              <button className="rounded-xl border bg-primary/80 border-primary px-6 py-3 transition hover:bg-primary/100 hover:cursor-pointer">
+              
+              <Button className="rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105 hover:cursor-pointer">مشاوره رایگان</Button>
+              <Button className="rounded-xl border bg-primary/80 border-primary px-6 py-3 transition hover:scale-105 hover:cursor-pointer">
                 مشاهده پروژه‌ها
-              </button>
+              </Button>
             </div>
           </div>
         </div>

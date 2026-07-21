@@ -32,7 +32,7 @@ const Hero = () => {
                 مشاوره رایگان
               </button>
 
-              <button className="rounded-xl border border-white px-6 py-3 transition hover:bg-white hover:cursor-pointer hover:text-primary">
+              <button className="rounded-xl border bg-primary/80 border-primary px-6 py-3 transition hover:bg-primary/100 hover:cursor-pointer">
                 مشاهده پروژه‌ها
               </button>
             </div>

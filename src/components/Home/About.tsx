@@ -1,6 +1,5 @@
 import img3 from "../../assets/img3.jpg"
 import { BadgeCheck, Users, Headset } from "lucide-react";
-import Button from "../Ui/Button";
 import { Link } from "react-router";
 
 const about =[

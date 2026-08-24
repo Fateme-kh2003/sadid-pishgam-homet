@@ -6,7 +6,6 @@ import panel from "../../assets/Panel.jpg";
 import panel2 from "../../assets/Panel2.png";
 import dorbin from "../../assets/Dorbin.jpg";
 import Button from "../Ui/Button";
-import { Link } from "react-router";
 
 const Hero = () => {
   return (

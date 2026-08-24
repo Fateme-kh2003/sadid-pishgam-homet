@@ -1,9 +1,23 @@
 import { Link } from "react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
-import Button from "../Ui/Button";
 
 const Footer = () => {
+    const navLinks = [
+        {path:"/" , label: "صفحه اصلی"},
+        { path: "/services" , label: "محصولات و خدمات" },
+        { path: "/projects", label: "پروژه ها" },
+        { path: "/about", label: "درباره ما" },
+        { path: "/contact", label: "تماس با ما" },
+        { path: "/services", label: "ورود/ثبت نام" }];
+    
+    const navContact = [
+      {icon:MapPin , lebel:"سمنان،شاهرود،میدان ولایت،بلوار شیرودی قبل از اخلاقی"},
+      {icon:Phone , lebel:"0912 123 4567"},
+      {icon:Mail , lebel:"info@hoomat.ir"},
+      {icon:FaInstagram , lebel:"hoomat.co"},
+    ]
+
   return (
     <footer className="relative mt-48 bg-primary text-white">
       <div className="absolute left-1/2 top-0 w-full max-w-5xl -translate-x-1/2 -translate-y-1/2 px-6">
@@ -44,66 +58,33 @@ const Footer = () => {
             </h3>
 
             <ul className="space-y-4 text-gray-300">
-              <li>
-                <Link className="hover:text-secondary" to="/">
-                  صفحه اصلی
-                </Link>
-              </li>
-
-              <li>
-                <Link className="hover:text-secondary" to="/services">
-                  خدمات
-                </Link>
-              </li>
-
-              <li>
-                <Link className="hover:text-secondary" to="/projects">
-                  پروژه‌ها
-                </Link>
-              </li>
-
-              <li>
-                <Link className="hover:text-secondary" to="/about">
-                  درباره ما
-                </Link>
-              </li>
-
-              <li>
-                <Link className="hover:text-secondary" to="/contact">
-                  تماس با ما
-                </Link>
-              </li>
+              {navLinks.map((link)=>{
+                return(
+                  <li>
+                    <Link key={link.path} to={link.path} className={"hover:text-secondary"}>
+                    <span>{link.label}</span>
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h3 className="mb-6 text-2xl font-semibold">
               اطلاعات تماس
             </h3>
 
             <div className="space-y-5">
-
-              <div className="flex items-center gap-3">
-                <MapPin className="text-secondary" />
-                <span>سمنان،شاهرود،میدان ولایت،بلوار شیرودی قبل از اخلاقی</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Phone className="text-secondary" />
-                <span>0912 123 4567</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Mail className="text-secondary" />
-                <span>info@hoomat.ir</span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <FaInstagram className="text-secondary size-6.5" />
-                <span>hoomat.co</span>
-              </div>
-
+              {navContact.map((contact)=>{
+                const Icon = contact.icon
+                return(
+                  <div className={"flex items-center gap-3"}>
+                    <Icon size={25} className={"text-secondary"}/>
+                    <span>{contact.lebel}</span>
+                  </div>
+                )
+              })}
             </div>
           </div>
 

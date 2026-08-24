@@ -8,7 +8,7 @@ const Header = () => {
     const navLinks = [
         { path: "/about", label: "درباره ما" },
         { path: "/contact", label: "تماس با ما" },
-        { path: "/services", label: "ورود/ثبت نام" }];
+      ];
 
     const dropdownLinks = [
       {title:"محصولات و خدمات",path:"/services",items:["پنل خورشیدی","دوربین مداربسته","سیستم ذخیره انرژی","نصب و پشتیبانی"]},
@@ -16,10 +16,10 @@ const Header = () => {
     ]    
 
   return (
-    <header className={"fixed top-4 left-1/2 w-[56%]  -translate-x-1/2 z-50"}>
+    <header className={"fixed top-4 left-1/2  -translate-x-1/2 z-50"}>
       <div className={"flex justify-between h-12 items-center rounded-3xl bg-primary/80 px-8 backdrop-blur-md"}>
         <Link to="/" className={"text-white text-4xl font-semibold"}>Hoomat</Link>
-        <div className={"flex text-white gap-6 text-base"}>
+        <div className={"flex text-white gap-6 text-base mr-3"}>
           {dropdownLinks.map((dropdown) => (
             <div key={dropdown.title} className="group relative">
               <Link to={dropdown.path} className="inline-block rounded-xl p-2 text-white transition hover:bg-secondary hover:text-primary">

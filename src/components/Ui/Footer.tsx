@@ -11,7 +11,7 @@ const Footer = () => {
         { path: "/contact", label: "تماس با ما" },
         { path: "/services", label: "ورود/ثبت نام" }];
     
-    const navContact = [
+    const contactInfo = [
       {icon:MapPin , lebel:"سمنان،شاهرود،میدان ولایت،بلوار شیرودی قبل از اخلاقی"},
       {icon:Phone , lebel:"0912 123 4567"},
       {icon:Mail , lebel:"info@hoomat.ir"},
@@ -76,7 +76,7 @@ const Footer = () => {
             </h3>
 
             <div className="space-y-5">
-              {navContact.map((contact)=>{
+              {contactInfo.map((contact)=>{
                 const Icon = contact.icon
                 return(
                   <div className={"flex items-center gap-3"}>

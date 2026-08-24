@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
+import Button from "./Button";
 
 const Footer = () => {
     const navLinks = [
@@ -35,9 +36,9 @@ const Footer = () => {
           </p>
 
           <div className="mt-8">
-            <Link to="/contact" className={"bg-primary rounded-xl px-6 py-3 font-semibold text-white transition hover:scale-105 hover:cursor-pointer"}>
+            <Button className={"bg-primary rounded-xl px-6 py-3 font-semibold text-white transition hover:scale-105 hover:cursor-pointer"}>
               تماس با ما
-            </Link>
+            </Button>
           </div>
         </div>
       </div>

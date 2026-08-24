@@ -1,4 +1,5 @@
 import { Sun, Camera, BatteryCharging,Wrench,} from "lucide-react";
+import { Link } from "react-router";
 
 
 const services = [
@@ -26,7 +27,7 @@ const Services = () => {
             راهکارهایی مطمئن، به‌روز و متناسب با نیاز مشتریان ارائه می‌دهیم.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-8">
+        <Link to="/services" className="grid grid-cols-2 gap-8">
           {services.map((service) => {
             const Icon = service.icon;
 
@@ -49,7 +50,7 @@ const Services = () => {
               </div>
             );
           })}
-        </div>
+        </Link>
       </div>
     </section>
   )

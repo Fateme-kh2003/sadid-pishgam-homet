@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import Button from "../Ui/Button";
 
 const Footer = () => {
@@ -20,9 +21,9 @@ const Footer = () => {
           </p>
 
           <div className="mt-8">
-            <Button className={"bg-primary rounded-xl px-6 py-3 font-semibold text-white transition hover:scale-105 hover:cursor-pointer"}>
+            <Link to="/contact" className={"bg-primary rounded-xl px-6 py-3 font-semibold text-white transition hover:scale-105 hover:cursor-pointer"}>
               تماس با ما
-            </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -85,7 +86,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-3">
                 <MapPin className="text-secondary" />
-                <span>شاهرود، ایران</span>
+                <span>سمنان،شاهرود،میدان ولایت،بلوار شیرودی قبل از اخلاقی</span>
               </div>
 
               <div className="flex items-center gap-3">
@@ -96,6 +97,11 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <Mail className="text-secondary" />
                 <span>info@hoomat.ir</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FaInstagram className="text-secondary size-6.5" />
+                <span>hoomat.co</span>
               </div>
 
             </div>

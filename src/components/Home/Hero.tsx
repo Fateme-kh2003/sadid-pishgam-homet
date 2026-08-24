@@ -6,6 +6,7 @@ import panel from "../../assets/Panel.jpg";
 import panel2 from "../../assets/Panel2.png";
 import dorbin from "../../assets/Dorbin.jpg";
 import Button from "../Ui/Button";
+import { Link } from "react-router";
 
 const Hero = () => {
   return (
@@ -31,8 +32,8 @@ const Hero = () => {
             <div className="flex gap-4">
               
               <Button className="rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105 hover:cursor-pointer">مشاوره رایگان</Button>
-              <Button className="rounded-xl border bg-primary/80 border-primary px-6 py-3 transition hover:scale-105 hover:cursor-pointer">
-                مشاهده پروژه‌ها
+              <Button  className="rounded-xl border bg-primary/80 border-primary px-6 py-3 transition hover:scale-105 hover:cursor-pointer">
+               <a href="#projects">مشاهده پروژه ها</a>
               </Button>
             </div>
           </div>

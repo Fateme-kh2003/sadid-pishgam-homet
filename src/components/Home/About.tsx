@@ -1,6 +1,7 @@
 import img3 from "../../assets/img3.jpg"
 import { BadgeCheck, Users, Headset } from "lucide-react";
 import Button from "../Ui/Button";
+import { Link } from "react-router";
 
 const about =[
     {title:"کیفیت تضمین‌شده", icon:BadgeCheck},
@@ -35,9 +36,9 @@ const About = () => {
                 )
             })}
           </div>
-          <Button className="mt-10 rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105 hover:cursor-pointer">
+          <Link to="/about" className="mt-10 inline-block rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105 hover:cursor-pointer">
             درباره ما
-          </Button>
+          </Link>
         </div>
         <div className="w-1/2">
           <img src={img3} alt="درباره هومت" className="h-137.5 w-full rounded-3xl object-cover shadow-xl"/>

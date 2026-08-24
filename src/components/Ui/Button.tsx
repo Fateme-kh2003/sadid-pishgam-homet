@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = ({ children, onClick, className, ...rest }: ButtonProps) => {

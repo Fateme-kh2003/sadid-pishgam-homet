@@ -3,10 +3,10 @@ import { Link } from "react-router";
 
 
 const services = [
-  {title: "پنل خورشیدی",description:"طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری و صنعتی.",icon: Sun,},
-  {title: "دوربین مداربسته",description:"اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.",icon: Camera,},
-  {title: "ذخیره‌سازی انرژی",description:"ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.",icon: BatteryCharging,},
-  {title: "نصب و پشتیبانی",description:"راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.",icon: Wrench,},
+  {title: "پنل خورشیدی",description:"طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری و صنعتی.",icon: Sun,path:"/services#solar"},
+  {title: "دوربین مداربسته",description:"اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.",icon: Camera,path: "/services#camera"},
+  {title: "ذخیره‌سازی انرژی",description:"ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.",icon: BatteryCharging,path: "/services#storage"},
+  {title: "نصب و پشتیبانی",description:"راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.",icon: Wrench,path: "/services#support"},
 ];
 
 const Services = () => {
@@ -27,11 +27,12 @@ const Services = () => {
             راهکارهایی مطمئن، به‌روز و متناسب با نیاز مشتریان ارائه می‌دهیم.
           </p>
         </div>
-        <Link to="/services" className="grid grid-cols-2 gap-8">
-          {services.map((service) => {
+          <div className="grid grid-cols-2 gap-8">
+            {services.map((service) => {
             const Icon = service.icon;
 
             return (
+              <Link to={service.path} >
               <div
                 key={service.title}
                 className="rounded-3xl bg-white p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer"
@@ -48,9 +49,10 @@ const Services = () => {
                   {service.description}
                 </p>
               </div>
+              </Link>
             );
           })}
-        </Link>
+          </div>
       </div>
     </section>
   )

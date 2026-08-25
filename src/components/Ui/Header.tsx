@@ -11,8 +11,15 @@ const Header = () => {
       ];
 
     const dropdownLinks = [
-      {title:"محصولات و خدمات",path:"/services",items:["پنل خورشیدی","دوربین مداربسته","سیستم ذخیره انرژی","نصب و پشتیبانی"]},
-      {title:"پروژه ها",path:"/projects",items:["پروژه های پنل خورشیدی","پروژه های دوربین مداربسته","پروژه های سیستم امنیتی"]},
+      {title:"محصولات و خدمات",path:"/services",items:[
+        { title: "پنل خورشیدی", path: "/services#solar" },
+        { title: "دوربین مداربسته", path: "/services#camera" },
+        { title: "سیستم ذخیره انرژی", path: "/services#storage" },
+        { title: "نصب و پشتیبانی", path: "/services#support" },]},
+      {title:"پروژه ها",path:"/projects",items:[
+        { title: "پروژه های پنل خورشیدی", path: "/projects#solar-projects" },
+        { title: "پروژه های دوربین مداربسته", path: "/projects#camera-projects" },
+        { title: "پروژه های سیستم امنیتی", path: "/projects#security-projects" },]}
     ]    
 
   return (
@@ -22,15 +29,15 @@ const Header = () => {
         <div className={"flex text-white gap-6 text-base mr-3"}>
           {dropdownLinks.map((dropdown) => (
             <div key={dropdown.title} className="group relative">
-              <Link to={dropdown.path} className="inline-block rounded-xl p-2 text-white transition hover:bg-secondary hover:text-primary">
+              <NavLink to={dropdown.path} className={({ isActive })=> `inline-block rounded-xl p-2 transition ${isActive ? "bg-secondary text-primary": "hover:bg-secondary hover:text-primary"}`} >
                 {dropdown.title}
-              </Link>
+              </NavLink>
 
               <div className="invisible absolute right-0 top-full mt-2 w-52 rounded-2xl bg-primary/80 p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
                 {dropdown.items.map((item) => (
-                <Link key={item} to={dropdown.path} className="block rounded-xl px-4 py-3 text-white transition hover:bg-secondary">
-                  {item}
-                </Link>
+                <a key={item.path} href={item.path} className="block rounded-xl px-4 py-3 text-white transition hover:bg-secondary">
+                  {item.title}
+                </a>
                 ))}
               </div>
             </div>

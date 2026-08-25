@@ -7,7 +7,7 @@ import member5 from "../../assets/member5.jpg"
 
 const teamMembers = [
   {
-    name: "امیر رضایی",
+    name: "امیرحسین ملکان",
     role: "مدیرعامل",
     image: manager,
     description:

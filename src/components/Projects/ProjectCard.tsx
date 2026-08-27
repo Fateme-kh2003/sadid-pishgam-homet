@@ -14,13 +14,13 @@ type ProjectCardProps = {
 const ProjectCard = ({ project, reverse = false }: ProjectCardProps) => {
   return (
     <section id={project.id} className="scroll-mt-32 px-8 pb-10">
-      <div className={`mx-auto flex max-w-7xl flex-col items-center gap-12 lg:flex-row ${ reverse ? "lg:flex-row-reverse" : ""}`}>
+      <div className={`mx-auto flex max-w-7xl flex-col items-center gap-3 mb-8 md:mb-0 md:gap-12 lg:flex-row ${ reverse ? "lg:flex-row-reverse" : ""}`}>
         <div className="w-full lg:w-1/2">
           <img src={project.image} alt={project.title} className="h-80 w-full rounded-3xl object-cover shadow-xl"/>
         </div>
 
         <div className="w-full lg:w-1/2">
-          <h2 className="text-4xl font-bold leading-relaxed text-primary">
+          <h2 className="text-3xl md:text-4xl font-bold leading-relaxed text-primary">
             {project.title}
           </h2>
 

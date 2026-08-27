@@ -30,7 +30,7 @@ const Header = () => {
       <div className="rounded-3xl bg-primary/80 px-5 py-2 backdrop-blur-md md:px-8">
         <div className="flex h-9 items-center justify-between">
           <Link to="/" className="text-white text-4xl font-semibold">Hoomat</Link>
-          <div className="hidden md:flex items-center text-white gap-6 text-base mr-3">
+          <div className="hidden md:flex items-center text-white gap-3 mr-3">
           {dropdownLinks.map((dropdown) => (
             <div key={dropdown.title} className="group relative">
               <NavLink to={dropdown.path} className={({ isActive })=> `inline-block rounded-xl p-2 transition ${isActive ? "bg-secondary text-primary": "hover:bg-secondary hover:text-primary"}`} >

@@ -63,7 +63,7 @@ const Services = () => {
     <>
     <Header/>
     <ScrollToHash />
-     <main className="bg-gray-50 pt-20">
+     <main className="bg-gray-50 pt-20 md:pt-22">
         {services.map((service, index) => (
           <ServiceCard key={service.id} service={service} reverse={index % 2 !== 0}/>
         ))}

@@ -53,7 +53,7 @@ const teamMembers = [
 
 const Team = () => {
   return (
-      <section className="bg-white px-8 py-5">
+      <section className="bg-white px-8 pb-16 md:py-5">
         <div className="mx-auto max-w-7xl">
 
           <div className="mb-14 text-center">
@@ -61,7 +61,7 @@ const Team = () => {
               تیم هومت
             </span>
 
-            <h2 className="mt-3 text-4xl font-bold text-primary">
+            <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary">
               آشنایی با اعضای تیم
             </h2>
 

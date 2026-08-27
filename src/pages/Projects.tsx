@@ -51,7 +51,7 @@ const Projects = () => {
    <>
    <Header/>
    <ScrollToHash />
-     <main className="bg-gray-50 pt-20">
+     <main className="bg-gray-50 pt-22 md:pt-20">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} reverse={index % 2 !== 0}/>
         ))}

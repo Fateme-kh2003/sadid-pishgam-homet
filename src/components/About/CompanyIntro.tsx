@@ -1,12 +1,12 @@
 const CompanyIntro = () => {
   return (
-    <section className="mx-auto max-w-6xl px-8 pt-17 pb-10">
+    <section className="mx-auto max-w-6xl px-4 md:px-8 pt-17  md:pb-10">
         <div className="mx-auto max-w-4xl text-center">
           <span className="text-3xl font-semibold text-secondary">
             درباره هومت
           </span>
 
-          <h1 className="mt-4 text-5xl font-bold leading-relaxed text-primary">
+          <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-relaxed text-primary">
             همراه شما برای انرژی پاک
             <br />
             و امنیت پایدار

@@ -10,7 +10,8 @@ const Footer = () => {
         { path: "/projects", label: "پروژه ها" },
         { path: "/about", label: "درباره ما" },
         { path: "/contact", label: "تماس با ما" },
-        { path: "/services", label: "ورود/ثبت نام" }];
+        { path: "/services", label: "ورود/ثبت نام" }
+      ];
     
     const contactInfo = [
       {icon:MapPin , lebel:"سمنان،شاهرود،میدان ولایت،بلوار شیرودی قبل از اخلاقی"},
@@ -21,17 +22,17 @@ const Footer = () => {
 
   return (
     <footer className="relative mt-48 bg-primary text-white">
-      <div className="absolute left-1/2 top-0 w-full max-w-5xl -translate-x-1/2 -translate-y-1/2 px-6">
+      <div className="absolute left-1/2 top-0  w-full max-w-5xl -translate-x-1/2 -translate-y-1/2 md:px-6">
         <div className="rounded-3xl bg-secondary p-10 text-center shadow-2xl">
           <span className="text-primary text-3xl font-semibold">
             آماده شروع پروژه هستید؟
           </span>
 
-          <h2 className="mt-4 text-4xl font-bold text-white">
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-white">
             پروژه بعدی شما می‌تواند با هومت آغاز شود.
           </h2>
 
-          <p className="mx-auto mt-5 max-w-3xl leading-8 text-gray-100">
+          <p className="mx-auto text-xl md:text-base mt-5 max-w-3xl leading-8 text-gray-100">
             اگر برای اجرای سیستم‌های خورشیدی یا تجهیزات امنیتی به مشاوره نیاز دارید، کارشناسان هومت آماده‌اند تا بهترین راهکار را متناسب با نیاز شما ارائه دهند.
           </p>
 
@@ -43,18 +44,18 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-8 pb-8 pt-52">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-8 pb-8 pt-63 md:pt-52">
+        <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-3">
           <div>
             <h2 className="text-4xl font-bold">Hoomat</h2>
-            <p className="mt-5 leading-8 text-gray-300">
+            <p className="mt-5 text-lg md:text-base leading-8 text-gray-300">
               ارائه‌دهنده راهکارهای نوین در حوزه انرژی خورشیدی و سیستم‌های
               امنیتی با تمرکز بر کیفیت، نوآوری و رضایت مشتری.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-6 text-2xl font-semibold">
+            <h3 className="mb-6 text-3xl md:text-2xl font-semibold">
               لینک‌های سریع
             </h3>
 
@@ -62,7 +63,7 @@ const Footer = () => {
               {navLinks.map((link)=>{
                 return(
                   <li>
-                    <Link key={link.path} to={link.path} className={"hover:text-secondary"}>
+                    <Link key={link.path} to={link.path} className={"hover:text-secondary text-lg md:text-base"}>
                     <span>{link.label}</span>
                     </Link>
                   </li>
@@ -72,7 +73,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="mb-6 text-2xl font-semibold">
+            <h3 className="mb-6 text-3xl md:text-2xl font-semibold">
               اطلاعات تماس
             </h3>
 
@@ -82,7 +83,7 @@ const Footer = () => {
                 return(
                   <div className={"flex items-center gap-3"}>
                     <Icon size={25} className={"text-secondary"}/>
-                    <span>{contact.lebel}</span>
+                    <span className="text-lg md:text-base">{contact.lebel}</span>
                   </div>
                 )
               })}

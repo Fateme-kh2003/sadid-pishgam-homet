@@ -1,13 +1,14 @@
 import Header from "../components/Ui/Header"
 import Footer from "../components/Ui/Footer"
 import CallButton from "../components/Ui/CallButton"
-import ServiceCard from "../components/Services/ServiceCard"
 import Service1 from "../assets/service1.jpg";
 import Service2 from "../assets/service2.jpg";
 import Service3 from "../assets/service3.jpg";
 import ScrollToHash from "../components/Ui/ScrollToHash";
+import DetailCard from './../components/Projects/DetailCard';
+import type { ProjectDetail  } from "../Types";
 
-const services = [
+const services:ProjectDetail [] = [
   {
     id: "solar",
     title: "پنل خورشیدی",
@@ -63,11 +64,11 @@ const Services = () => {
     <>
     <Header/>
     <ScrollToHash />
-     <main className="bg-gray-50 pt-20 md:pt-22">
-        {services.map((service, index) => (
-          <ServiceCard key={service.id} service={service} reverse={index % 2 !== 0}/>
-        ))}
-      </main>
+    <main className="bg-gray-50 pt-20 md:pt-22">
+      {services.map((service, index) => (
+        <DetailCard key={service.id} item={service} reverse={index % 2 !== 0}/>
+      ))}
+    </main>
     <CallButton/>
     <Footer/>
     </>

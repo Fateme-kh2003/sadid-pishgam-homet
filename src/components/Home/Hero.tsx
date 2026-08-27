@@ -16,7 +16,7 @@ const Hero = () => {
       <Swiper modules={[Autoplay, Pagination]} pagination={{ clickable: true }} autoplay={{ delay: 4000 }} loop={true}>
         {picture.map((picture)=>(
            <SwiperSlide>
-            <img src={picture.img} alt={picture.alt} className="h-165 md:h-175 w-full object-cover object-[center_30%]"/>
+            <img src={picture.img} alt={picture.alt} className="h-165 md:h-160 w-full object-cover object-[center_30%]"/>
             <div className="absolute inset-0 bg-black/20"></div>
            </SwiperSlide>
         ))}

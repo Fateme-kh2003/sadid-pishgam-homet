@@ -10,13 +10,13 @@ const about =[
 
 const About = () => {
   return ( 
-    <section className="bg-white pb-8 pt-28 md:py-24">
+    <section className="bg-white pb-8 pt-28 md:py-17">
       <div className="mx-auto flex max-w-7xl items-center gap-16  md:px-8">
         <div className="md:w-1/2 md:text-start text-center">
           <span className="text-secondary text-3xl md:text-4xl font-semibold">
             چرا هومت؟
           </span>
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold text-primary leading-relaxed">
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary leading-relaxed">
             انتخابی مطمئن برای
             <br />
             انرژی پاک و امنیت پایدار
@@ -35,7 +35,7 @@ const About = () => {
                 )
             })}
           </div>
-          <Link to="/about" className="mt-10 inline-block rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105 hover:cursor-pointer">
+          <Link to="/about" className="mt-10 md:mt-6   inline-block rounded-xl bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105 hover:cursor-pointer">
             درباره ما
           </Link>
         </div>

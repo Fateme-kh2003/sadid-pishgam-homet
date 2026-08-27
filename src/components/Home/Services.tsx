@@ -18,7 +18,7 @@ const Services = () => {
             خدمات ما
           </span>
 
-          <h2 className="mt-3 text-3xl md:text-5xl font-bold text-primary">
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary">
             خدماتی که ارائه می‌دهیم
           </h2>
 
@@ -32,7 +32,7 @@ const Services = () => {
             const Icon = service.icon;
             return (
               <Link to={service.path} key={service.title}  >
-                <div className="rounded-3xl h-auto md:h-60 bg-gray-100 md:bg-white px-3 py-4 md:p-8 text-center md:text-start shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer">
+                <div className="rounded-3xl h-auto bg-gray-100 md:bg-white px-3 py-4 md:p-6 text-center md:text-start shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer">
                   <div className="mb-4 md:mb-6 flex h-16 w-16 items-center justify-center rounded-2xl mx-9 md:mx-0 bg-secondary/20">
                    <Icon className="text-secondary" size={32} />
                   </div>

@@ -6,7 +6,7 @@ const CompanyIntro = () => {
             درباره هومت
           </span>
 
-          <h1 className="mt-4 text-3xl md:text-5xl font-bold leading-relaxed text-primary">
+          <h1 className="mt-4 text-3xl md:text-4xl font-bold leading-relaxed text-primary">
             همراه شما برای انرژی پاک
             <br />
             و امنیت پایدار

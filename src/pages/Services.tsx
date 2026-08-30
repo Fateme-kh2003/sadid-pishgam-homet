@@ -5,7 +5,7 @@ import Service1 from "../assets/service1.jpg";
 import Service2 from "../assets/service2.jpg";
 import Service3 from "../assets/service3.jpg";
 import ScrollToHash from "../components/Ui/ScrollToHash";
-import DetailCard from './../components/Projects/DetailCard';
+import DetailCard from '../components/Ui/DetailCard';
 import type { ProjectDetail  } from "../Types";
 
 const services:ProjectDetail [] = [

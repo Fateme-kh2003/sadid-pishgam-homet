@@ -2,8 +2,7 @@ import { Phone } from "lucide-react";
 import { FaWhatsapp, FaTelegramPlane } from "react-icons/fa";
 import Button from "./Button";
 
-const contactLinkClass =
-  "flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white shadow-lg transition hover:scale-105";
+const contactLinkClass ="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white shadow-lg transition hover:scale-105";
 
 const contactLinks = [
   { label: "تماس", href: "tel:+989XXXXXXXXX", icon: Phone, external: false },

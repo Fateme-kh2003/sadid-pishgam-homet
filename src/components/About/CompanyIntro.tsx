@@ -5,7 +5,7 @@ const CompanyIntro = () => {
     "باور ما این است که استفاده هوشمندانه از انرژی پاک در کنار راهکارهای نوین امنیتی می‌تواند نقش مهمی در ساخت آینده‌ای پایدارتر و ایمن‌تر داشته باشد.",
   ];
   return (
-    <section className="max-w-4xl px-4 md:px-8 pt-17  md:pb-10 mx-auto text-center">
+    <section className="max-w-4xl px-4 md:px-8 pt-20  md:pb-10 mx-auto text-center">
         <span className="text-3xl font-semibold text-secondary">درباره هومت</span>
           <h1 className="mt-4 text-3xl md:text-4xl font-bold leading-relaxed text-primary">
             همراه شما برای انرژی پاک

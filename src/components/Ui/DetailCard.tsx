@@ -1,9 +1,4 @@
-import type { ProjectDetail } from "../../Types";
-
-type DetailCardProps = {
-  item: ProjectDetail;
-  reverse?: boolean;
-};
+import type { DetailCardProps } from "../../Types";
 
 const DetailCard = ({ item, reverse = false }: DetailCardProps) => {
   return (
@@ -13,7 +8,8 @@ const DetailCard = ({ item, reverse = false }: DetailCardProps) => {
       </div>
       <div className="w-full lg:w-1/2">
         <h2 className="text-3xl md:text-4xl font-bold leading-relaxed text-primary">{item.title}</h2>
-        <p className="mt-6 text-lg leading-9 text-gray-600">{item.description}</p>
+        <h3 className="mt-3 text-xl leading-relaxed text-gray-600">{item.location}</h3>
+        <p className="text-lg leading-9 text-gray-600">{item.description}</p>
         <div className="mt-6 space-y-3">
           {item.features.map((feature) => (
             <div key={feature} className="flex items-center gap-3">

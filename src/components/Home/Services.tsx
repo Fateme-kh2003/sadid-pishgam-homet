@@ -1,8 +1,8 @@
 import { Sun, Camera, BatteryCharging,Wrench,} from "lucide-react";
 import { Link } from "react-router";
-import type {ServiceItem} from "../../Types"
+import type {ServiceItemCard} from "../../Types"
 
-const services:ServiceItem[] = [
+const services:ServiceItemCard[] = [
   {label: "پنل خورشیدی",description:"طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری وصنعتی.",icon: Sun,path:"/services#solar"},
   {label: "دوربین مداربسته",description:"اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.",icon: Camera,path: "/services#camera"},
   {label: "ذخیره‌سازی انرژی",description:"ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.",icon: BatteryCharging,path: "/services#storage"},

@@ -21,7 +21,7 @@ const contactInfo:IconItem[] = [
 
 const Footer = () => {
   return (
-    <footer className="relative mt-48 bg-primary text-white">
+    <footer className="relative mt-55 md:mt-48 bg-primary text-white">
       <div className="absolute left-1/2 top-0  w-full max-w-5xl -translate-x-1/2 -translate-y-1/2 md:px-6 rounded-3xl bg-secondary p-10 text-center shadow-2xl">
          <span className="text-primary text-3xl font-semibold">آماده شروع پروژه هستید؟</span>
          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-white">پروژه بعدی شما می‌تواند با هومت آغاز شود.</h2>
@@ -69,8 +69,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="mt-14 border-t border-white/10 pt-6 text-center text-gray-400">
-          © 2026 Hoomat. All rights reserved.
+        <div className="mt-14 border-t border-white/10 pt-6 text-center text-gray-400 flex justify-between mx-2 flex-col gap-3 md:flex-row">
+          <Link to="/admin/login" className="bg-secondary text-sm text-black font-semibold rounded-xl px-4 py-3 hover:scale-105 transition">
+             ورود مدیریت
+          </Link>
+          <span> © 2026 Hoomat. All rights reserved.</span>
         </div>
       </div>
     </footer>

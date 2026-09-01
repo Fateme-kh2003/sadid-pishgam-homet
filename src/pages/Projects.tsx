@@ -12,6 +12,7 @@ const projects:ProjectDetail [] = [
   {
     id: "solar-projects",
     title: "پروژه پنل خورشیدی",
+    location:"شاهرود",
     image: Service1,
     description:"ارائه راهکارهای مناسب برای استفاده از انرژی خورشیدی، از طراحی و انتخاب تجهیزات تا نصب و راه‌اندازی سیستم.",
     features: [
@@ -24,6 +25,7 @@ const projects:ProjectDetail [] = [
   {
     id: "camera-projects",
     title: "پروژه دوربین مداربسته",
+    location:"تهران",
     image: Service2,
     description:"طراحی و اجرای سیستم‌های نظارتی و امنیتی متناسب با نیاز ساختمان‌ها، مجموعه‌های تجاری و پروژه‌های مختلف.",
     features: [
@@ -36,6 +38,7 @@ const projects:ProjectDetail [] = [
   {
     id: "security-projects",
     title: "پروژه سیستم ذخیره انرژی",
+    location:"سمنان",
     image: Service3,
     description:"راهکارهای ذخیره‌سازی انرژی برای استفاده بهینه‌تر از انرژی تولیدشده و افزایش پایداری سیستم.",
     features: [

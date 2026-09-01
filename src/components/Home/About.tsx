@@ -4,9 +4,9 @@ import { Link } from "react-router";
 import type { IconItem } from "../../Types"
 
 const about:IconItem[] =[
-    {label:"کیفیت تضمین‌شده", icon:BadgeCheck},
-    {label:"تیم متخصص و باتجربه", icon:Users},
-    {label:"پشتیبانی و خدمات پس از اجرا", icon:Headset},  
+  {label:"کیفیت تضمین‌شده", icon:BadgeCheck},
+  {label:"تیم متخصص و باتجربه", icon:Users},
+  {label:"پشتیبانی و خدمات پس از اجرا", icon:Headset},  
 ]
 
 const About = () => {

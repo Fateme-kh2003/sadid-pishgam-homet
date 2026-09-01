@@ -8,7 +8,7 @@ const heroFields: FieldConfig[] = [
 ];
 
 const heroInitialValues = {
-  title: "راهکارهای نوین\nانرژی خورشیدی و سیستم‌های امنیتی",
+ title: "راهکارهای نوین\nانرژی خورشیدی و سیستم‌های امنیتی",
   description:"طراحی، تأمین، نصب و پشتیبانی انواع پنل‌های خورشیدی و سیستم‌های نظارتی با بهره‌گیری از تجهیزات باکیفیت و تیمی متخصص.",
   images: ["Panel.jpg", "Panel2.png", "Dorbin.jpg"].join("\n"),
 };

@@ -12,7 +12,7 @@ const contactLinks = [
 
 const CallButton = () => {
   return (
-     <div className="group fixed bottom-6 left-6 z-50">
+    <div className="group fixed bottom-6 left-6 z-50">
       <div className="absolute bottom-20 left-2 flex flex-col items-end gap-3 opacity-0 invisible translate-y-3 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0">
         {contactLinks.map((contact)=>{
           const Icon= contact.icon

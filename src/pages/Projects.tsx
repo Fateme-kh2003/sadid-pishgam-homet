@@ -1,11 +1,7 @@
-import Header from "../components/Ui/Header"
-import Footer from "../components/Ui/Footer"
-import CallButton from "../components/Ui/CallButton"
 import DetailCard from "../components/Ui/DetailCard"
 import Service1 from "../assets/service1.jpg";
 import Service2 from "../assets/service2.jpg";
 import Service3 from "../assets/service3.jpg";
-import ScrollToHash from "../components/Ui/ScrollToHash";
 import type { ProjectDetail  } from "../Types";
 
 const projects:ProjectDetail [] = [
@@ -52,17 +48,11 @@ const projects:ProjectDetail [] = [
 
 const Projects = () => {
   return (
-   <>
-   <Header/>
-   <ScrollToHash />
    <main className="bg-gray-50 pt-22 md:pt-20">
     {projects.map((project, index) => (
       <DetailCard key={project.id} item={project} reverse={index % 2 !== 0}/>
     ))}
    </main>
-   <CallButton/>
-   <Footer/>
-   </>
   )
 }
 

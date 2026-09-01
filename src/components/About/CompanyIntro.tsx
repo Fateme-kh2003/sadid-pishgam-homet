@@ -6,18 +6,18 @@ const CompanyIntro = () => {
   ];
   return (
     <section className="max-w-4xl px-4 md:px-8 pt-20  md:pb-10 mx-auto text-center">
-        <span className="text-3xl font-semibold text-secondary">درباره هومت</span>
-          <h1 className="mt-4 text-3xl md:text-4xl font-bold leading-relaxed text-primary">
-            همراه شما برای انرژی پاک
-            <br />
-            و امنیت پایدار
-          </h1>
-          {paragraphs.map((text, index) => (
-          <p key={index} className={`text-lg leading-9 text-gray-600 ${index === 0 ? "mt-8" : "mt-5"}`}>
-            {text}
-          </p>
-        ))}
-      </section>
+      <span className="text-3xl font-semibold text-secondary">درباره هومت</span>
+      <h1 className="mt-4 text-3xl md:text-4xl font-bold leading-relaxed text-primary">
+       همراه شما برای انرژی پاک
+       <br />
+       و امنیت پایدار
+      </h1>
+      {paragraphs.map((text, index) => (
+        <p key={index} className={`text-lg leading-9 text-gray-600 ${index === 0 ? "mt-8" : "mt-5"}`}>
+         {text}
+        </p>
+      ))}
+    </section>
   )
 }
 

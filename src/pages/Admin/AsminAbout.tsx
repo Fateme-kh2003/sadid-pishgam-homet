@@ -10,27 +10,9 @@ import Button from "../../components/Ui/Button";
 import useAdminCrud from "../../hooks/useAdminCrud";
 
 const initialTeam: TeamMember[] = [
-  {
-    id: "manager",
-    name: "امیرحسین ملکان",
-    role: "مدیرعامل",
-    image: manager,
-    description: "هدایت مجموعه و توسعه فعالیت‌های هومت با تمرکز بر ارائه راهکارهای نوین.",
-  },
-  {
-    id: "member1",
-    name: "محمد احمدی",
-    role: "مدیر فنی",
-    image: member1,
-    description: "نظارت بر طراحی و اجرای پروژه‌ها و اطمینان از کیفیت فنی خدمات.",
-  },
-  {
-    id: "member2",
-    name: "سارا کریمی",
-    role: "مهندس پروژه",
-    image: member2,
-    description: "برنامه‌ریزی و نظارت بر اجرای پروژه‌های انرژی خورشیدی.",
-  },
+  { id: "manager", name: "امیرحسین ملکان", role: "مدیرعامل", image: manager, description: "هدایت مجموعه و توسعه فعالیت‌های هومت با تمرکز بر ارائه راهکارهای نوین.",},
+  { id: "member1", name: "محمد احمدی", role: "مدیر فنی", image: member1, description: "نظارت بر طراحی و اجرای پروژه‌ها و اطمینان از کیفیت فنی خدمات.",},
+  { id: "member2",  name: "سارا کریمی", role: "مهندس پروژه", image: member2, description: "برنامه‌ریزی و نظارت بر اجرای پروژه‌های انرژی خورشیدی.",},
 ];
 
 const AdminAbout = () => {

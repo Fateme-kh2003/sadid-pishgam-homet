@@ -6,34 +6,10 @@ import Button from "../../components/Ui/Button";
 import useAdminCrud from "../../hooks/useAdminCrud";
 
 const initialServices: ServiceItem[] = [
-  {
-    id: "solar",
-    title: "پنل خورشیدی",
-    description: "طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری و صنعتی.",
-    icon: Sun,
-    path: "/services#solar",
-  },
-  {
-    id: "camera",
-    title: "دوربین مداربسته",
-    description: "اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.",
-    icon: Camera,
-    path: "/services#camera",
-  },
-  {
-    id: "storage",
-    title: "ذخیره‌سازی انرژی",
-    description: "ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.",
-    icon: BatteryCharging,
-    path: "/services#storage",
-  },
-  {
-    id: "support",
-    title: "نصب و پشتیبانی",
-    description: "راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.",
-    icon: Wrench,
-    path: "/services#support",
-  },
+  { id: "solar", title: "پنل خورشیدی", description: "طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری و صنعتی.", icon: Sun, path: "/services#solar",},
+  { id: "camera", title: "دوربین مداربسته", description: "اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.", icon: Camera, path: "/services#camera",},
+  { id: "storage", title: "ذخیره‌سازی انرژی", description: "ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.", icon: BatteryCharging, path: "/services#storage",},
+  { id: "support", title: "نصب و پشتیبانی", description: "راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.", icon: Wrench, path: "/services#support",},
 ];
 
 const AdminServices = () => {

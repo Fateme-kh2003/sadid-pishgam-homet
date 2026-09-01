@@ -11,14 +11,11 @@ const services:ServiceItemCard[] = [
 
 const Services = () => {
   return (
-     <section className="bg-gray-50 pt-14 md:py-10 mx-auto max-w-7xl px-4">
+    <section className="bg-gray-50 pt-14 md:py-10 mx-auto max-w-7xl px-4">
       <div className="mb-4 md:mb-16 text-center">
         <span className="text-secondary text-3xl md:text-4xl font-semibold">خدمات ما</span>
         <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary"> خدماتی که ارائه می‌دهیم</h2>
-        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600">
-           با ارائه خدمات تخصصی در حوزه انرژی خورشیدی و سیستم‌های امنیتی،
-           راهکارهایی مطمئن، به‌روز و متناسب با نیاز مشتریان ارائه می‌دهیم.
-        </p>
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600"> با ارائه خدمات تخصصی در حوزه انرژی خورشیدی و سیستم‌های امنیتی، راهکارهایی مطمئن، به‌روز و متناسب با نیاز مشتریان ارائه می‌دهیم.</p>
       </div>
       <div className="grid grid-cols-2 gap-4 md:gap-8">
         {services.map((service) => {
@@ -36,7 +33,7 @@ const Services = () => {
             );
         })}
       </div>
-     </section>
+    </section>
   )
 }
 

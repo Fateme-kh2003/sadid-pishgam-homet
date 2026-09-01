@@ -9,7 +9,7 @@ const fields = [
 
 const SignIn = () => {
   return (
-     <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
+    <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl">
       <div className="mb-4 text-center">
         <h1 className="text-4xl font-bold text-primary">Hoomat</h1>
         <p className="mt-3 text-lg text-gray-600">ورود به پنل مدیریت</p>

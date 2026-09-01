@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import type { RouteObject } from "react-router";
+import RootLayout from "./Layout/RootLayout"
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Contact from './pages/Contact';
 import Projects from './pages/Projects';
 import Services from './pages/Services';
 import LoginPage from "./pages/LoginPage";
@@ -15,27 +15,16 @@ import AdminFooter from "./pages/Admin/AdminFooter";
 import ChangePassword from "./pages/Admin/ChangePassword";
 import AdminHome from "./pages/Admin/AdminHome";
 
-
 const routes: RouteObject[] = [
  {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/services",
-    element: <Services />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
+    element: <RootLayout />,
+    children:[
+      {index: true ,element:<Home/>},
+      {path:"/about",element:<About/>},
+      {path:"/services",element:<Services/>},
+      {path:"/projects",element:<Projects/>},
+    ]
   },
   {
     path: "/admin/login",

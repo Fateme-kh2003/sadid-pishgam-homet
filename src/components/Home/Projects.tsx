@@ -18,7 +18,7 @@ const Projects = () => {
         <h2 className="mt-3 text-2xl md:text-4xl font-bold text-primary">نمونه‌ای از پروژه‌های اجرا شده</h2>
       </div>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mx-10 md:mx-20">
-          {projects.map((project) => (
+        {projects.map((project) => (
           <Link key={project.label} to={project.path} >
             <div className="overflow-hidden rounded-3xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer">
               <img src={project.image} alt={project.label} className="h-64 w-full object-cover"/>

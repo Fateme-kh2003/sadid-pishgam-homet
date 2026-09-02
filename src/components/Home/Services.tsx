@@ -1,12 +1,12 @@
-import { Sun, Camera, BatteryCharging,Wrench,} from "lucide-react";
+import { Sun, Camera, BatteryCharging, Wrench } from "lucide-react";
 import { Link } from "react-router";
-import type {ServiceItemCard} from "../../Types"
+import type { ServiceItem } from "../../Types/content";
 
-const services:ServiceItemCard[] = [
-  {label: "پنل خورشیدی",description:"طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری وصنعتی.",icon: Sun,path:"/services#solar"},
-  {label: "دوربین مداربسته",description:"اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.",icon: Camera,path: "/services#camera"},
-  {label: "ذخیره‌سازی انرژی",description:"ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.",icon: BatteryCharging,path: "/services#storage"},
-  {label: "نصب و پشتیبانی",description:"راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.",icon: Wrench,path: "/services#support"},
+const services: ServiceItem[] = [
+  { id: "solar", title: "پنل خورشیدی", description: "طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری وصنعتی.", icon: Sun, path: "/services#solar",},
+  { id: "camera", title: "دوربین مداربسته", description: "اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.", icon: Camera, path: "/services#camera",},
+  { id: "storage", title: "ذخیره‌سازی انرژی", description: "ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.", icon: BatteryCharging, path: "/services#storage",},
+  { id: "support", title: "نصب و پشتیبانی", description: "راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.", icon: Wrench, path: "/services#support",},
 ];
 
 const Services = () => {
@@ -21,20 +21,20 @@ const Services = () => {
         {services.map((service) => {
           const Icon = service.icon;
           return (
-            <Link to={service.path} key={service.label}  >
+            <Link to={service.path} key={service.id}>
               <div className="rounded-3xl h-auto bg-gray-100 md:bg-white px-3 py-4 md:p-6 text-center md:text-start shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer">
                 <div className="mb-4 md:mb-6 flex h-16 w-16 items-center justify-center rounded-2xl mx-9 md:mx-0 bg-secondary/20">
                   <Icon className="text-secondary" size={32} />
                 </div>
-                <h3 className="text-lg md:text-2xl font-bold text-primary">{service.label}</h3>
+                <h3 className="text-lg md:text-2xl font-bold text-primary">{service.title}</h3>
                 <p className="mt-2 md:mt-4 leading-5 md:leading-8 text-gray-600">{service.description}</p>
               </div>
             </Link>
-            );
+          );
         })}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

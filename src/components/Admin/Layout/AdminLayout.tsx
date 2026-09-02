@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink, Outlet } from "react-router";
 import { LayoutDashboard,FolderKanban,Wrench,Users,PanelBottom,KeyRound,ChevronRight,ChevronLeft,House} from "lucide-react";
 import Button from "../../Ui/Button";
-import type { AdminNavItem } from "../../../Types";
+import type { AdminNavItem } from "../../../Types/nav";
 
 const navItems: AdminNavItem[] = [
   { label: "داشبورد", path: "/admin", icon: LayoutDashboard },

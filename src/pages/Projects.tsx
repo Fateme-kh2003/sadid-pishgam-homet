@@ -2,7 +2,7 @@ import DetailCard from "../components/Ui/DetailCard"
 import Service1 from "../assets/service1.jpg";
 import Service2 from "../assets/service2.jpg";
 import Service3 from "../assets/service3.jpg";
-import type { ProjectDetail  } from "../Types";
+import type { ProjectDetail  } from "../Types/content";
 
 const projects:ProjectDetail [] = [
   {

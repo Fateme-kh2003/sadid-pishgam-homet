@@ -1,4 +1,4 @@
-import type { ServiceItem } from "../../../Types";
+import type { ServiceItem } from "../../../Types/content";
 import AdminCardActions from "../Ui/AdminCardactions";
 
 type AdminServiceCardProps = {

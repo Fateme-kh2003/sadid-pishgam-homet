@@ -1,6 +1,6 @@
 import EntityFormModal from "../Ui/EntityFormModal";
-import type { FieldConfig } from "../../../Types";
-import type { TeamMember } from "../../../Types";
+import type { FieldConfig } from "../../../Types/forms";
+import type { TeamMember } from "../../../Types/content";
 
 const fields: FieldConfig[] = [
   { name: "name", label: "نام", type: "text", required: true },

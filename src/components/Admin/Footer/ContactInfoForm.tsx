@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ContentForm from "../Ui/ContentForm";
-import type { ContactInfo } from "../../../Types";
+import type { ContactInfo } from "../../../Types/content";
 
 const initialContactInfo: ContactInfo = {address: "سمنان، شاهرود، میدان ولایت، بلوار شیرودی قبل از اخلاقی", phone: "0912 123 4567", email: "info@hoomat.ir", instagram: "hoomat.co",};
 

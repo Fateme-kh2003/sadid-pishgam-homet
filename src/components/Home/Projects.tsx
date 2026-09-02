@@ -2,7 +2,7 @@ import img2 from "../../assets/img2.jpg"
 import img1 from "../../assets/img1.jpg"
 import img4 from "../../assets/img4.jpg"
 import { Link } from "react-router";
-import type {ProjectSummary} from "../../Types"
+import type {ProjectSummary} from "../../Types/content"
 
 const projects:ProjectSummary[] = [
   {label: "نیروگاه خورشیدی کارخانه",location: "شاهرود",image: img2,path: "/projects#solar-projects"},

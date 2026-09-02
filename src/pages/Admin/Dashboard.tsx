@@ -1,5 +1,10 @@
 import { FolderKanban, Wrench, Users, ShieldCheck } from "lucide-react";
-import type { StatCard } from "../../Types";
+
+export type StatCard = {
+  label: string;
+  value: number;
+  icon: React.ElementType;
+};
 
 const stats: StatCard[] = [
   { label: "پروژه‌ها", value: 3, icon: FolderKanban },

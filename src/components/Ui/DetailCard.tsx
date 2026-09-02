@@ -1,4 +1,9 @@
-import type { DetailCardProps } from "../../Types";
+import type { ProjectDetail } from "../../Types/content";
+
+export type DetailCardProps = {
+  item: ProjectDetail;
+  reverse?: boolean;
+};
 
 const DetailCard = ({ item, reverse = false }: DetailCardProps) => {
   return (

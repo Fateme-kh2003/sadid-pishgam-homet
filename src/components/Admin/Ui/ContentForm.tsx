@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../../Ui/Button";
-import type { FieldConfig } from "../../../Types";
+import type { FieldConfig } from "../../../Types/forms";
 
 const inputClass ="w-full rounded-xl border border-gray-200 px-4 py-3 text-right outline-none transition focus:border-secondary";
 

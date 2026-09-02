@@ -1,4 +1,4 @@
-import type { ProjectDetail } from "../../../Types";
+import type { ProjectDetail } from "../../../Types/content";
 import AdminCardActions from "../Ui/AdminCardactions";
 
 type AdminProjectCardProps = {

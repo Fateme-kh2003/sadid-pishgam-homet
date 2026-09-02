@@ -1,7 +1,7 @@
 import img3 from "../../assets/img3.jpg"
 import { BadgeCheck, Users, Headset } from "lucide-react";
 import { Link } from "react-router";
-import type { IconItem } from "../../Types"
+import type { IconItem } from "../../Types/content"
 
 const about:IconItem[] =[
   {label:"کیفیت تضمین‌شده", icon:BadgeCheck},

@@ -1,7 +1,7 @@
 import { Plus, Sun, Camera, BatteryCharging, Wrench } from "lucide-react";
 import AdminServiceCard from "../../components/Admin/Services/AdminServiceCard";
 import ServiceFormModal from "../../components/Admin/Services/ServiceFormModal";
-import type { ServiceItem } from "../../Types";
+import type { ServiceItem } from "../../Types/content";
 import Button from "../../components/Ui/Button";
 import useAdminCrud from "../../hooks/useAdminCrud";
 

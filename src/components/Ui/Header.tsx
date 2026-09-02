@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router"
 import { Search, X , Menu} from "lucide-react";
 import { useState } from "react";
 import Button from "./Button";
-import type {DropdownLink } from "../../Types"
+import type {DropdownLink } from "../../Types/nav"
 
 const dropdownLinks: DropdownLink[] = [
   {label:"محصولات و خدمات",path:"/services",items:[

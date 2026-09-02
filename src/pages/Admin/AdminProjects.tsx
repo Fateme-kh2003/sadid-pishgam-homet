@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Plus } from "lucide-react";
 import AdminProjectCard from "../../components/Admin/Projects/AdminProjectCard";
 import ProjectFormModal from "../../components/Admin/Projects/ProjectFormModal";
-import type { ProjectDetail } from "../../Types";
+import type { ProjectDetail } from "../../Types/content";
 import Service1 from "../../assets/service1.jpg";
 import Service2 from "../../assets/service2.jpg";
 import Service3 from "../../assets/service3.jpg";

@@ -1,4 +1,4 @@
-import type { TeamMember } from "../../../Types";
+import type { TeamMember } from "../../../Types/content";
 import AdminCardActions from "../Ui/AdminCardactions";
 
 type AdminTeamMemberCardProps = {

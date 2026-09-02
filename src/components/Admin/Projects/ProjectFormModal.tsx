@@ -1,6 +1,6 @@
 import EntityFormModal from "../Ui/EntityFormModal";
-import type { FieldConfig } from "../../../Types";
-import type { ProjectDetail } from "../../../Types";
+import type { FieldConfig } from "../../../Types/forms";
+import type { ProjectDetail } from "../../../Types/content";
 
 const fields: FieldConfig[] = [
   { name: "title", label: "عنوان پروژه", type: "text", required: true },

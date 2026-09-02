@@ -1,5 +1,5 @@
 import ContentForm from "../Ui/ContentForm";
-import type { FieldConfig } from "../../../Types";
+import type { FieldConfig } from "../../../Types/forms";
 
 const heroFields: FieldConfig[] = [
   { name: "title", label: "عنوان (هر خط یک سطر)", type: "textarea" },

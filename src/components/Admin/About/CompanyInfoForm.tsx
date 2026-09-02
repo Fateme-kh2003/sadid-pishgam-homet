@@ -1,5 +1,5 @@
 import ContentForm from "../Ui/ContentForm";
-import type { FieldConfig } from "../../../Types";
+import type { FieldConfig } from "../../../Types/forms";
 
 const currentTitle = "همراه شما برای انرژی پاک و امنیت پایدار";
 

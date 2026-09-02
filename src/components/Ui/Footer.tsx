@@ -2,7 +2,8 @@ import { Link } from "react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FaInstagram } from "react-icons/fa";
 import Button from "./Button";
-import type { NavItem,IconItem } from "../../Types";
+import type { IconItem } from "../../Types/content";
+import type { NavItem } from "../../Types/nav";
 
 const navLinks: NavItem[] = [
   { path:"/" , label: "صفحه اصلی"},

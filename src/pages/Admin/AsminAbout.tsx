@@ -2,7 +2,7 @@ import { Plus } from "lucide-react";
 import CompanyInfoForm from "../../components/Admin/About/CompanyInfoForm";
 import AdminTeamMemberCard from "../../components/Admin/About/AdminTeamMemberCard";
 import TeamMemberFormModal from "../../components/Admin/About/TeamMemberFormModal";
-import type { TeamMember } from "../../Types";
+import type { TeamMember } from "../../Types/content";
 import manager from "../../assets/manager.jpg";
 import member1 from "../../assets/member1.jpg";
 import member2 from "../../assets/member2.jpg";

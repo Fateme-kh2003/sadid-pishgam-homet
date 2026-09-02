@@ -1,7 +1,7 @@
 import { Sun, Camera, BatteryCharging, Wrench } from "lucide-react";
 import EntityFormModal from "../Ui/EntityFormModal";
-import type { FieldConfig } from "../../../Types";
-import type { ServiceItem } from "../../../Types";
+import type { FieldConfig } from "../../../Types/forms";
+import type { ServiceItem } from "../../../Types/content";
 
 const iconMap: Record<string, React.ElementType> = { Sun, Camera, BatteryCharging, Wrench };
 

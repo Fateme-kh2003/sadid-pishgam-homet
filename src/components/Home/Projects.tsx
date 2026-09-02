@@ -1,13 +1,13 @@
-import img2 from "../../assets/img2.jpg"
-import img1 from "../../assets/img1.jpg"
-import img4 from "../../assets/img4.jpg"
+import ProjectImage1 from "../../assets/ProjectImage1.png"
+import ProjectImage2 from "../../assets/ProjectImage2.png"
+import ProjectImage3 from "../../assets/ProjectImage3.png"
 import { Link } from "react-router";
 import type {ProjectSummary} from "../../Types/content"
 
 const projects:ProjectSummary[] = [
-  {label: "نیروگاه خورشیدی کارخانه",location: "شاهرود",image: img2,path: "/projects#solar-projects"},
-  {label: "پنل خورشیدی ویلایی", location: "تهران", image: img1,path: "/projects#camera-projects"  },
-  {label: "سیستم نظارتی مجتمع تجاری",location: "سمنان",image: img4,path: "/projects#security-projects"},
+  {label: "نیروگاه خورشیدی کارخانه",location: "شاهرود",image: ProjectImage1,path: "/projects#solar-projects"},
+  {label: "پنل خورشیدی ویلایی", location: "تهران", image: ProjectImage2,path: "/projects#camera-projects"  },
+  {label: "سیستم نظارتی مجتمع تجاری",location: "سمنان",image: ProjectImage3,path: "/projects#security-projects"},
 ];
 
 const Projects = () => {

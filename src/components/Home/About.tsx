@@ -1,4 +1,4 @@
-import img3 from "../../assets/img3.jpg"
+import AboutPage from "../../assets/AboutImage.png"
 import { BadgeCheck, Users, Headset } from "lucide-react";
 import { Link } from "react-router";
 import type { IconItem } from "../../Types/content"
@@ -35,7 +35,7 @@ const About = () => {
             درباره ما
         </Link>
       </div>
-      <img src={img3} alt="درباره هومت" className="h-137.5 w-1/2 rounded-3xl object-cover shadow-xl hidden md:flex"/>
+      <img src={AboutPage} alt="درباره هومت" className="h-137.5 w-1/2 rounded-3xl object-cover shadow-xl hidden md:flex"/>
     </section>
   )
 }

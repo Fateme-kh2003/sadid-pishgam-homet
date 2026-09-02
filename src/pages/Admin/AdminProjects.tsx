@@ -3,15 +3,15 @@ import { Plus } from "lucide-react";
 import AdminProjectCard from "../../components/Admin/Projects/AdminProjectCard";
 import ProjectFormModal from "../../components/Admin/Projects/ProjectFormModal";
 import type { ProjectDetail } from "../../Types/content";
-import Service1 from "../../assets/service1.jpg";
-import Service2 from "../../assets/service2.jpg";
-import Service3 from "../../assets/service3.jpg";
+import ProjectImage1 from "../../assets/ProjectImage1.png";
+import ProjectImage2 from "../../assets/HeroImage2.png";
+import ProjectImage3 from "../../assets/HeroImage3.png";
 import Button from "../../components/Ui/Button";
 
 const initialProjects: ProjectDetail[] = [
-  { id: "solar-projects", title: "پروژه پنل خورشیدی", location: "شاهرود", image: Service1, description:"ارائه راهکارهای مناسب برای استفاده از انرژی خورشیدی، از طراحی و انتخاب تجهیزات تا نصب و راه‌اندازی سیستم.", features: ["طراحی سیستم خورشیدی", "تأمین تجهیزات", "نصب و راه‌اندازی", "پشتیبانی و نگهداری"],},
-  { id: "camera-projects", title: "پروژه دوربین مداربسته", location: "تهران", image: Service2, description:"طراحی و اجرای سیستم‌های نظارتی و امنیتی متناسب با نیاز ساختمان‌ها، مجموعه‌های تجاری و پروژه‌های مختلف.", features: ["طراحی سیستم نظارتی", "تأمین دوربین و تجهیزات", "نصب و تنظیم تجهیزات", "پشتیبانی سیستم"],},
-  { id: "storage-projects", title: "پروژه سیستم ذخیره انرژی", location: "سمنان", image: Service3, description: "راهکارهای ذخیره‌سازی انرژی برای استفاده بهینه‌تر از انرژی تولیدشده و افزایش پایداری سیستم.", features: ["بررسی نیاز پروژه", "انتخاب تجهیزات مناسب", "نصب و راه‌اندازی", "پشتیبانی فنی"],},
+  { id: "solar-projects", title: "پروژه پنل خورشیدی", location: "شاهرود", image: ProjectImage1, description:"ارائه راهکارهای مناسب برای استفاده از انرژی خورشیدی، از طراحی و انتخاب تجهیزات تا نصب و راه‌اندازی سیستم.", features: ["طراحی سیستم خورشیدی", "تأمین تجهیزات", "نصب و راه‌اندازی", "پشتیبانی و نگهداری"],},
+  { id: "camera-projects", title: "پروژه دوربین مداربسته", location: "تهران", image: ProjectImage3, description:"طراحی و اجرای سیستم‌های نظارتی و امنیتی متناسب با نیاز ساختمان‌ها، مجموعه‌های تجاری و پروژه‌های مختلف.", features: ["طراحی سیستم نظارتی", "تأمین دوربین و تجهیزات", "نصب و تنظیم تجهیزات", "پشتیبانی سیستم"],},
+  { id: "storage-projects", title: "پروژه سیستم ذخیره انرژی", location: "سمنان", image: ProjectImage2, description: "راهکارهای ذخیره‌سازی انرژی برای استفاده بهینه‌تر از انرژی تولیدشده و افزایش پایداری سیستم.", features: ["بررسی نیاز پروژه", "انتخاب تجهیزات مناسب", "نصب و راه‌اندازی", "پشتیبانی فنی"],},
 ];
 
 const AdminProjects = () => {

@@ -5,9 +5,8 @@ import Button from "./Button";
 const contactLinkClass ="flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white shadow-lg transition hover:scale-105";
 
 const contactLinks = [
-  { label: "تماس", href: "tel:+989XXXXXXXXX", icon: Phone, external: false },
-  { label: "واتساپ", href: "https://wa.me/989XXXXXXXXX", icon: FaWhatsapp, external: true },
-  { label: "تلگرام", href: "https://t.me/USERNAME", icon: FaTelegramPlane, external: true },
+  { label: "واتساپ", href: "https://wa.me/09120812787", icon: FaWhatsapp, external: true },
+  { label: "تلگرام", href: "https://t.me/SPHoomat", icon: FaTelegramPlane, external: true },
 ];
 
 const CallButton = () => {

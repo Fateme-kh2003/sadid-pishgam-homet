@@ -9,7 +9,7 @@ const dropdownLinks: DropdownLink[] = [
     { label: "پنل خورشیدی", path: "/services#solar" },
     { label: "دوربین مداربسته", path: "/services#camera" },
     { label: "سیستم ذخیره انرژی", path: "/services#storage" },
-    { label: "نصب و پشتیبانی", path: "/services#support" },]},
+    { label: "شبکه وایرلس،اکتیو،پسیو و فیبر نوری", path: "/services#network" },]},
   {label:"پروژه ها",path:"/projects",items:[
     { label: "پروژه های پنل خورشیدی", path: "/projects#solar-projects" },
     { label: "پروژه های دوربین مداربسته", path: "/projects#camera-projects" },

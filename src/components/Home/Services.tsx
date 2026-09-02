@@ -1,4 +1,4 @@
-import { Sun, Camera, BatteryCharging, Wrench } from "lucide-react";
+import { Sun, Camera, BatteryCharging, Network } from "lucide-react";
 import { Link } from "react-router";
 import type { ServiceItem } from "../../Types/content";
 
@@ -6,7 +6,7 @@ const services: ServiceItem[] = [
   { id: "solar", title: "پنل خورشیدی", description: "طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری وصنعتی.", icon: Sun, path: "/services#solar",},
   { id: "camera", title: "دوربین مداربسته", description: "اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.", icon: Camera, path: "/services#camera",},
   { id: "storage", title: "ذخیره‌سازی انرژی", description: "ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.", icon: BatteryCharging, path: "/services#storage",},
-  { id: "support", title: "نصب و پشتیبانی", description: "راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.", icon: Wrench, path: "/services#support",},
+  {id: "network", title: "شبکه وایرلس، اکتیو، پسیو و فیبر نوری", description:"طراحی، اجرا و راه‌اندازی زیرساخت‌های شبکه، شبکه‌های وایرلس و سیستم‌های فیبر نوری با توجه به نیاز پروژه.", icon: Network, path: "/services#network",},
 ];
 
 const Services = () => {
@@ -22,7 +22,7 @@ const Services = () => {
           const Icon = service.icon;
           return (
             <Link to={service.path} key={service.id}>
-              <div className="rounded-3xl h-auto bg-gray-100 md:bg-white px-3 py-4 md:p-6 text-center md:text-start shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer">
+              <div className="rounded-3xl h-full bg-gray-100 md:bg-white px-3 py-4 md:p-6 text-center md:text-start shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:cursor-pointer">
                 <div className="mb-4 md:mb-6 flex h-16 w-16 items-center justify-center rounded-2xl mx-9 md:mx-0 bg-secondary/20">
                   <Icon className="text-secondary" size={32} />
                 </div>

@@ -2,12 +2,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import panel from "../../assets/Panel.jpg";
-import panel2 from "../../assets/Panel2.png";
-import dorbin from "../../assets/Dorbin.jpg";
-import Button from "../Ui/Button";
+import HeroImage1 from "../../assets/HeroImage1.png";
+import HeroImage2 from "../../assets/HeroImage2.png";
+import HeroImage3 from "../../assets/HeroImage3.png";
 
-const picture = [{img:panel,alt:"پنل خورشیدی"} , {img:panel2,alt:"پنل خورشیدی"} ,{img:dorbin,alt:"دوربین مداربسته"} ]
+const picture = [{img:HeroImage1,alt:"پنل خورشیدی"} , {img:HeroImage2,alt:"پنل خورشیدی"} ,{img:HeroImage3,alt:"دوربین مداربسته"} ]
 const ctaButtonClass = "rounded-xl px-6 py-3 font-semibold transition hover:scale-105";
 
 const Hero = () => {
@@ -29,9 +28,7 @@ const Hero = () => {
             </h1>
             <p className="mb-8 md:mb-8 text-xl leading-8 text-gray-200"> طراحی، تأمین، نصب و پشتیبانی انواع پنل‌های خورشیدی و سیستم‌های نظارتی با بهره‌گیری از تجهیزات باکیفیت و تیمی متخصص.</p>
             <div className="flex gap-4">  
-              <Button className={`${ctaButtonClass} bg-secondary text-primary`}>
-               مشاوره رایگان
-              </Button>
+              <a href="https://wa.me/09120812787" className={`${ctaButtonClass} bg-secondary text-primary`}>مشاوره رایگان</a>
               <a href="#projects" className={`${ctaButtonClass} border bg-primary/80 border-primary text-center`}>مشاهده پروژه ها</a>
             </div>
           </div>

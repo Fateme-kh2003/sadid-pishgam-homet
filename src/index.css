@@ -1,9 +1,14 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F172A;
+  --color-secondary: #FACC15;
+  --color-background: #F8FAFC;
+  --color-text: #1E293B;
+  --color-white: #FFFFFF;
 }
 
-body {
-  font-family: sans-serif;
+html {
+  direction: rtl;
+  scroll-behavior: smooth;
 }

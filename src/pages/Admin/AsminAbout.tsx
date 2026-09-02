@@ -3,16 +3,15 @@ import CompanyInfoForm from "../../components/Admin/About/CompanyInfoForm";
 import AdminTeamMemberCard from "../../components/Admin/About/AdminTeamMemberCard";
 import TeamMemberFormModal from "../../components/Admin/About/TeamMemberFormModal";
 import type { TeamMember } from "../../Types/content";
-import manager from "../../assets/manager.jpg";
-import member5 from "../../assets/member5.jpg";
-import member2 from "../../assets/member2.jpg";
+import manager from "../../assets/manager.png";
+import member from "../../assets/Portrait_Placeholder.png";
 import Button from "../../components/Ui/Button";
 import useAdminCrud from "../../hooks/useAdminCrud";
 
 const initialTeam: TeamMember[] = [
   { id: "manager", name: "امیرحسین ملکان", role: "مدیرعامل", image: manager, description: "هدایت مجموعه و توسعه فعالیت‌های هومت با تمرکز بر ارائه راهکارهای نوین.",},
-  { id: "member1", name: "مائده میرباقری", role: "مدیر فنی", image: member2, description: "نظارت بر طراحی و اجرای پروژه‌ها و اطمینان از کیفیت فنی خدمات.",},
-  { id: "member2",  name: "محمدمهدی خدابنده لو", role: "مهندس پروژه", image: member5, description: "برنامه‌ریزی و نظارت بر اجرای پروژه‌های انرژی خورشیدی.",},
+  { id: "member1", name: "مائده میرباقری", role: "مدیر فنی", image: member, description: "نظارت بر طراحی و اجرای پروژه‌ها و اطمینان از کیفیت فنی خدمات.",},
+  { id: "member2",  name: "محمدمهدی خدابنده لو", role: "مهندس پروژه", image: member, description: "برنامه‌ریزی و نظارت بر اجرای پروژه‌های انرژی خورشیدی.",},
 ];
 
 const AdminAbout = () => {

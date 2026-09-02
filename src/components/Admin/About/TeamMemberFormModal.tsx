@@ -1,15 +1,16 @@
 import EntityFormModal from "../Ui/EntityFormModal";
 import type { FieldConfig } from "../../../Types/forms";
 import type { TeamMember } from "../../../Types/content";
+import placeholderImage from "../../../assets/Portrait_Placeholder.png";
 
 const fields: FieldConfig[] = [
   { name: "name", label: "نام", type: "text", required: true },
   { name: "role", label: "سمت", type: "text", required: true },
-  { name: "image", label: "آدرس تصویر", type: "text"},
+  { name: "image", label: "آدرس تصویر", type: "text" },
   { name: "description", label: "توضیحات", type: "textarea", required: true },
 ];
 
-const emptyValues = { name: "", role: "", image: "", description: "" };
+const emptyValues = {name: "",role: "",image: "",description: "",};
 
 type TeamMemberFormModalProps = {
   isOpen: boolean;
@@ -18,7 +19,12 @@ type TeamMemberFormModalProps = {
   initialData?: TeamMember;
 };
 
-const TeamMemberFormModal = ({ isOpen, onClose, onSave, initialData }: TeamMemberFormModalProps) => {
+const TeamMemberFormModal = ({
+  isOpen,
+  onClose,
+  onSave,
+  initialData,
+}: TeamMemberFormModalProps) => {
   const initialValues = initialData
     ? {
         name: initialData.name,
@@ -33,10 +39,11 @@ const TeamMemberFormModal = ({ isOpen, onClose, onSave, initialData }: TeamMembe
       id: initialData?.id ?? crypto.randomUUID(),
       name: values.name,
       role: values.role,
-      image: values.image,
+      image: values.image.trim() || placeholderImage,
       description: values.description,
     });
   };
+
   return (
     <EntityFormModal
       isOpen={isOpen}

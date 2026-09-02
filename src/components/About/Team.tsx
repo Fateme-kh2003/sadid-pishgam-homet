@@ -1,13 +1,11 @@
-import manager from "../../assets/manager.jpg"
-import member2 from "../../assets/member2.jpg"
-import member4 from "../../assets/member4.jpg"
-import member5 from "../../assets/member5.jpg"
+import manager from "../../assets/manager.png"
+import member from "../../assets/Portrait_Placeholder.png"
 
 const teamMembers = [
   { name: "امیرحسین ملکان", role: "مدیرعامل و مدیر اجرایی", image: manager,},
-  { name: "مائده میرباقری", role: "مدیرمالی و رئیس هیئت مدیره", image: member2,},
-  { name: "محمد مهدی خدابنده لو", role: "کارشناس شبکه",image: member5,},
-  { name: "فاطمه خدابنده لو", role: "کارشناس طراحی", image: member4,},
+  { name: "مائده میرباقری", role: "مدیرمالی و رئیس هیئت مدیره", image: member,},
+  { name: "محمد مهدی خدابنده لو", role: "کارشناس شبکه",image: member,},
+  { name: "فاطمه خدابنده لو", role: "کارشناس طراحی", image: member,},
 ];
 
 const Team = () => {

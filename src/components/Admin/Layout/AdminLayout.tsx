@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router";
-import { LayoutDashboard,FolderKanban,Wrench,Users,PanelBottom,KeyRound,ChevronRight,ChevronLeft,House} from "lucide-react";
+import { LayoutDashboard,FolderKanban,Wrench,Users,PanelBottom,KeyRound,ChevronRight,ChevronLeft,House,LogOut} from "lucide-react";
 import Button from "../../Ui/Button";
 import type { AdminNavItem } from "../../../Types/nav";
+import { useNavigate } from "react-router";
+import { logoutRequest } from "../../../services/authService";
 
 const navItems: AdminNavItem[] = [
   { label: "داشبورد", path: "/admin", icon: LayoutDashboard },
@@ -21,6 +23,20 @@ const navLinkClass = (isActive: boolean) =>
 
 const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const navigate = useNavigate();
+
+const handleLogout = async () => {
+  try {
+    const { error } = await logoutRequest();
+    if (error) {
+      console.error(error);
+      return;
+    }
+    navigate("/");
+  } catch (error) {
+    console.error("خطا در خروج از حساب:", error);
+  }
+};
 
   return (
     <div className="flex bg-gray-50">
@@ -42,6 +58,12 @@ const AdminLayout = () => {
             );
           })}
         </nav>
+        <div className="mt-4 px-2 md:px-3">
+        <Button onClick={handleLogout} className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-gray-200 transition hover:bg-white/10">
+          <LogOut size={22} className="shrink-0" />
+          {isOpen && <span className="whitespace-nowrap">خروج</span>}
+        </Button>
+        </div>
       </aside>
       <main className="flex-1 pt-2 p-6 md:p-10 overflow-hidden">
         <Outlet />

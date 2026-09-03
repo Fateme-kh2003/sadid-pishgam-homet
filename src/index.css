@@ -12,3 +12,22 @@ html {
   direction: rtl;
   scroll-behavior: smooth;
 }
+
+.spinner {
+  margin: 3.2rem auto 1.6rem;
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid rgb(207, 100, 118);
+  border-right-color: transparent;
+  animation: rotate 1s infinite linear;
+}
+.spinner-mini {
+  margin: 0 auto;
+  width: 25px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 4);
+  border-right-color: transparent;
+  animation: rotate 1s infinite linear;
+}

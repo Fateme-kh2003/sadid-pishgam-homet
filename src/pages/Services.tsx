@@ -1,7 +1,7 @@
-import AboutImage from "../assets/AboutImage.png";
-import ProjectImage3 from "../assets/ProjectImage3.png";
-import HeroImage1 from "../assets/HeroImage1.png";
-import HeroImage2 from "../assets/HeroImage2.png"
+import AboutImage from "../assets/AboutImage.webp";
+import ProjectImage3 from "../assets/ProjectImage3.webp";
+import HeroImage1 from "../assets/HeroImage1.webp";
+import HeroImage2 from "../assets/HeroImage2.webp"
 import DetailCard from '../components/Ui/DetailCard';
 import type { ProjectDetail  } from "../Types/content";
 

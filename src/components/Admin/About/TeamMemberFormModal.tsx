@@ -1,7 +1,7 @@
 import EntityFormModal from "../Ui/EntityFormModal";
 import type { FieldConfig } from "../../../Types/forms";
 import type { TeamMember } from "../../../Types/content";
-import placeholderImage from "../../../assets/Portrait_Placeholder.png";
+import placeholderImage from "../../../assets/Portrait_Placeholder.webp";
 
 const fields: FieldConfig[] = [
   { name: "name", label: "نام", type: "text", required: true },

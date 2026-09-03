@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import HeroImage1 from "../../assets/HeroImage1.png";
-import HeroImage2 from "../../assets/HeroImage2.png";
-import HeroImage3 from "../../assets/HeroImage3.png";
+import HeroImage1 from "../../assets/HeroImage1.webp";
+import HeroImage2 from "../../assets/HeroImage2.webp";
+import HeroImage3 from "../../assets/HeroImage3.webp";
 
 const picture = [{img:HeroImage1,alt:"پنل خورشیدی"} , {img:HeroImage2,alt:"پنل خورشیدی"} ,{img:HeroImage3,alt:"دوربین مداربسته"} ]
 const ctaButtonClass = "rounded-xl px-6 py-3 font-semibold transition hover:scale-105";

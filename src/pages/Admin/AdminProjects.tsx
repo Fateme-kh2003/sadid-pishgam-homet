@@ -3,9 +3,9 @@ import { Plus } from "lucide-react";
 import AdminProjectCard from "../../components/Admin/Projects/AdminProjectCard";
 import ProjectFormModal from "../../components/Admin/Projects/ProjectFormModal";
 import type { ProjectDetail } from "../../Types/content";
-import ProjectImage1 from "../../assets/ProjectImage1.png";
-import ProjectImage2 from "../../assets/HeroImage2.png";
-import ProjectImage3 from "../../assets/HeroImage3.png";
+import ProjectImage1 from "../../assets/ProjectImage1.webp";
+import ProjectImage2 from "../../assets/ProjectImage2.webp";
+import ProjectImage3 from "../../assets/ProjectImage3.webp";
 import Button from "../../components/Ui/Button";
 
 const initialProjects: ProjectDetail[] = [

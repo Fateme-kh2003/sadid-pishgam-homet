@@ -1,5 +1,5 @@
-import manager from "../../assets/manager.png"
-import member from "../../assets/Portrait_Placeholder.png"
+import manager from "../../assets/manager.webp"
+import member from "../../assets/Portrait_Placeholder.webp"
 
 const teamMembers = [
   { name: "امیرحسین ملکان", role: "مدیرعامل و مدیر اجرایی", image: manager,},

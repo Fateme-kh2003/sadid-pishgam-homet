@@ -1,7 +1,7 @@
 import DetailCard from "../components/Ui/DetailCard"
-import ProjectImage1 from "../assets/ProjectImage1.png";
-import ProjectImage2 from "../assets/ProjectImage2.png";
-import ProjectImage3 from "../assets/ProjectImage3.png";
+import ProjectImage1 from "../assets/ProjectImage1.webp";
+import ProjectImage2 from "../assets/ProjectImage2.webp";
+import ProjectImage3 from "../assets/ProjectImage3.webp";
 import type { ProjectDetail  } from "../Types/content";
 
 const projects:ProjectDetail [] = [

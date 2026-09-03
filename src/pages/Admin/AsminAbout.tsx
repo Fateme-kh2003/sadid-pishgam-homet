@@ -3,8 +3,8 @@ import CompanyInfoForm from "../../components/Admin/About/CompanyInfoForm";
 import AdminTeamMemberCard from "../../components/Admin/About/AdminTeamMemberCard";
 import TeamMemberFormModal from "../../components/Admin/About/TeamMemberFormModal";
 import type { TeamMember } from "../../Types/content";
-import manager from "../../assets/manager.png";
-import member from "../../assets/Portrait_Placeholder.png";
+import manager from "../../assets/manager.webp";
+import member from "../../assets/Portrait_Placeholder.webp";
 import Button from "../../components/Ui/Button";
 import useAdminCrud from "../../hooks/useAdminCrud";
 

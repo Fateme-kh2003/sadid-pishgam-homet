@@ -8,7 +8,6 @@ const CopyrightForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // فعلاً بدون بک‌اند — فقط UI
     console.log({ copyrightText });
   };
 

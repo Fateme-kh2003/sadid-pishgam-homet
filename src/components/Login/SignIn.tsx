@@ -9,11 +9,6 @@ import { Eye, EyeOff } from "lucide-react";
 
 const inputClass ="w-full rounded-xl border border-gray-200 px-4 py-3 text-right outline-none transition focus:border-secondary";
 
-const fields = [
-  { name: "username", label: "نام کاربری", type: "text", placeholder: "نام کاربری خود را وارد کنید"},
-  { name: "password", label: "رمز عبور", type: "password", placeholder: "رمز عبور خود را وارد کنید" },
-];
-
 const SignIn = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");

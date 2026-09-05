@@ -23,8 +23,9 @@ export interface ServiceItem {
   id: string;
   title: string;
   description: string;
-  icon: React.ElementType;
-  path: string;
+  emoji?: string;
+  image?: string;
+  features: string[];
 }
 
 export interface TeamMember {

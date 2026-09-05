@@ -3,6 +3,8 @@ import type { FieldConfig } from "../../../Types/forms";
 import type { TeamMember } from "../../../Types/content";
 import placeholderImage from "../../../assets/Portrait_Placeholder.webp";
 
+type FormValue = string | File;
+
 const fields: FieldConfig[] = [
   { name: "name", label: "نام", type: "text", required: true },
   { name: "role", label: "سمت", type: "text", required: true },
@@ -34,13 +36,18 @@ const TeamMemberFormModal = ({
       }
     : undefined;
 
-  const handleSave = (values: Record<string, string>) => {
+  const handleSave = (values: Record<string, FormValue>) => {
+    const name = typeof values.name === "string" ? values.name : "";
+    const role = typeof values.role === "string" ? values.role : "";
+    const image = typeof values.image === "string" ? values.image : "";
+    const description =typeof values.description === "string" ? values.description : "";
+
     onSave({
       id: initialData?.id ?? crypto.randomUUID(),
-      name: values.name,
-      role: values.role,
-      image: values.image.trim() || placeholderImage,
-      description: values.description,
+      name,
+      role,
+      image: image.trim() || placeholderImage,
+      description,
     });
   };
 

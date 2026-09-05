@@ -1,28 +1,28 @@
-import { Plus, Sun, Camera, BatteryCharging, Wrench } from "lucide-react";
+import { Plus } from "lucide-react";
 import AdminServiceCard from "../../components/Admin/Services/AdminServiceCard";
 import ServiceFormModal from "../../components/Admin/Services/ServiceFormModal";
 import type { ServiceItem } from "../../Types/content";
 import Button from "../../components/Ui/Button";
-import useAdminCrud from "../../hooks/useAdminCrud";
-
-const initialServices: ServiceItem[] = [
-  { id: "solar", title: "پنل خورشیدی", description: "طراحی، تأمین و نصب انواع سیستم‌های خورشیدی برای مصارف خانگی، تجاری و صنعتی.", icon: Sun, path: "/services#solar",},
-  { id: "camera", title: "دوربین مداربسته", description: "اجرای سیستم‌های نظارتی و امنیتی با تجهیزات پیشرفته و کیفیت بالا.", icon: Camera, path: "/services#camera",},
-  { id: "storage", title: "ذخیره‌سازی انرژی", description: "ارائه راهکارهای ذخیره انرژی با استفاده از باتری‌ها و تجهیزات استاندارد.", icon: BatteryCharging, path: "/services#storage",},
-  { id: "support", title: "نصب و پشتیبانی", description: "راه‌اندازی، سرویس دوره‌ای و پشتیبانی تخصصی برای تمامی پروژه‌ها.", icon: Wrench, path: "/services#support",},
-];
+import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
+import { getServicesRequest, addServiceRequest, updateServiceRequest, deleteServiceRequest,} from "../../services/Servicesservice";
 
 const AdminServices = () => {
   const {
     items: services,
+    isLoading,
     isModalOpen,
-    setIsModalOpen,
     editingItem: editingService,
     openAddModal,
     openEditModal,
+    closeModal,
     handleSave,
     handleDelete,
-  } = useAdminCrud<ServiceItem>(initialServices);
+  } = useSupabaseCrud<ServiceItem>({
+    getAll: getServicesRequest,
+    add: addServiceRequest,
+    update: updateServiceRequest,
+    remove: deleteServiceRequest,
+  });
 
   return (
     <div>
@@ -36,12 +36,21 @@ const AdminServices = () => {
           افزودن سرویس
         </Button>
       </div>
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {services.map((service) => (
-          <AdminServiceCard key={service.id} service={service} onEdit={() => openEditModal(service)} onDelete={() => handleDelete(service.id)}/>
-        ))}
-      </div>
-      <ServiceFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} initialData={editingService}/>
+      {isLoading ? (
+        <p className="mt-8 text-gray-500">در حال بارگذاری...</p>
+      ) : (
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service) => (
+            <AdminServiceCard
+              key={service.id}
+              service={service}
+              onEdit={() => openEditModal(service)}
+              onDelete={() => handleDelete(service.id)}
+            />
+          ))}
+        </div>
+      )}
+      <ServiceFormModal isOpen={isModalOpen} onClose={closeModal} onSave={handleSave} initialData={editingService}/>
     </div>
   );
 };

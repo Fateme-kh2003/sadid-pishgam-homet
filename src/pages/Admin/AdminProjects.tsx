@@ -1,44 +1,28 @@
-import { useState } from "react";
 import { Plus } from "lucide-react";
 import AdminProjectCard from "../../components/Admin/Projects/AdminProjectCard";
 import ProjectFormModal from "../../components/Admin/Projects/ProjectFormModal";
 import type { ProjectDetail } from "../../Types/content";
-import ProjectImage1 from "../../assets/ProjectImage1.webp";
-import ProjectImage2 from "../../assets/ProjectImage2.webp";
-import ProjectImage3 from "../../assets/ProjectImage3.webp";
 import Button from "../../components/Ui/Button";
-
-const initialProjects: ProjectDetail[] = [
-  { id: "solar-projects", title: "پروژه پنل خورشیدی", location: "شاهرود", image: ProjectImage1, description:"ارائه راهکارهای مناسب برای استفاده از انرژی خورشیدی، از طراحی و انتخاب تجهیزات تا نصب و راه‌اندازی سیستم.", features: ["طراحی سیستم خورشیدی", "تأمین تجهیزات", "نصب و راه‌اندازی", "پشتیبانی و نگهداری"],},
-  { id: "camera-projects", title: "پروژه دوربین مداربسته", location: "تهران", image: ProjectImage3, description:"طراحی و اجرای سیستم‌های نظارتی و امنیتی متناسب با نیاز ساختمان‌ها، مجموعه‌های تجاری و پروژه‌های مختلف.", features: ["طراحی سیستم نظارتی", "تأمین دوربین و تجهیزات", "نصب و تنظیم تجهیزات", "پشتیبانی سیستم"],},
-  { id: "storage-projects", title: "پروژه سیستم ذخیره انرژی", location: "سمنان", image: ProjectImage2, description: "راهکارهای ذخیره‌سازی انرژی برای استفاده بهینه‌تر از انرژی تولیدشده و افزایش پایداری سیستم.", features: ["بررسی نیاز پروژه", "انتخاب تجهیزات مناسب", "نصب و راه‌اندازی", "پشتیبانی فنی"],},
-];
+import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
+import { getProjectsRequest, addProjectRequest, updateProjectRequest, deleteProjectRequest, } from "../../services/Projectservice";
 
 const AdminProjects = () => {
-  const [projects, setProjects] = useState<ProjectDetail[]>(initialProjects);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingProject, setEditingProject] = useState<ProjectDetail | undefined>(undefined);
-
-  const openAddModal = () => {
-    setEditingProject(undefined);
-    setIsModalOpen(true);
-  };
-
-  const openEditModal = (project: ProjectDetail) => {
-    setEditingProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleSave = (project: ProjectDetail) => {
-    setProjects((prev) => {
-      const exists = prev.some((p) => p.id === project.id);
-      return exists ? prev.map((p) => (p.id === project.id ? project : p)) : [...prev, project];
-    });
-  };
-
-  const handleDelete = (id: string) => {
-    setProjects((prev) => prev.filter((p) => p.id !== id));
-  };
+  const {
+   items: projects,
+   isLoading,
+   isModalOpen, 
+   editingItem: editingProject, 
+   openAddModal, 
+   openEditModal, 
+   closeModal, 
+   handleSave, 
+   handleDelete, 
+  } = useSupabaseCrud<ProjectDetail>({ 
+    getAll: getProjectsRequest,
+    add: addProjectRequest, 
+    update: updateProjectRequest, 
+    remove: deleteProjectRequest, 
+  });
 
   return (
     <div>
@@ -52,22 +36,21 @@ const AdminProjects = () => {
           افزودن پروژه
         </Button>
       </div>
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <AdminProjectCard
-            key={project.id}
-            project={project}
-            onEdit={() => openEditModal(project)}
-            onDelete={() => handleDelete(project.id)}
-          />
-        ))}
-      </div>
-      <ProjectFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSave={handleSave}
-        initialData={editingProject}
-      />
+      {isLoading ? ( 
+        <p className="mt-8 text-gray-500">در حال بارگذاری...</p> 
+        ) : ( 
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => ( 
+            <AdminProjectCard 
+              key={project.id} 
+              project={project} 
+              onEdit={() => openEditModal(project)} 
+              onDelete={() => handleDelete(project.id)} 
+            /> 
+          ))} 
+        </div> 
+      )}
+      <ProjectFormModal isOpen={isModalOpen} onClose={closeModal} onSave={handleSave} initialData={editingProject}/>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import EntityFormModal from "../Ui/EntityFormModal";
 import type { FieldConfig } from "../../../Types/forms";
 import type { ProjectDetail } from "../../../Types/content";
+import { uploadProjectImage } from "../../../services/storageService";
 
 type FormValue = string | File;
 
@@ -8,8 +9,8 @@ const fields: FieldConfig[] = [
   { name: "title", label: "عنوان پروژه", type: "text", required: true },
   { name: "location", label: "لوکیشن", type: "text", required: true },
   { name: "description", label: "توضیحات", type: "textarea", required: true },
-  { name: "image", label: "آدرس تصویر", type: "text"},
-  { name: "features", label: "ویژگی‌ها (هر خط یک ویژگی)", type: "textarea"},
+  { name: "image", label: "تصویر پروژه", type: "file" , required: false},
+  { name: "features", label: "ویژگی‌ها (هر خط یک ویژگی)", type: "textarea", required:false},
 ];
 
 const emptyValues = { title: "", location: "", description: "", image: "", features: "" };
@@ -17,7 +18,7 @@ const emptyValues = { title: "", location: "", description: "", image: "", featu
 type ProjectFormModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (project: ProjectDetail) => void;
+  onSave: (project: Omit<ProjectDetail, "id">) => void;
   initialData?: ProjectDetail;
 };
 
@@ -27,28 +28,32 @@ const ProjectFormModal = ({ isOpen, onClose, onSave, initialData }: ProjectFormM
         title: initialData.title,
         location: initialData.location ?? "",
         description: initialData.description,
-        image: initialData.image,
-        features: initialData.features.join("\n"),
+        image: initialData.image ?? "",
+        features: initialData.features?.join("\n") ?? "",
       }
     : undefined;
 
-  const handleSave = (values: Record<string, FormValue>) => {
-    const title = typeof values.title === "string" ? values.title : "";
-    const location = typeof values.location === "string" ? values.location : "";
-    const description = typeof values.description === "string" ? values.description : "";
-    const image = typeof values.image === "string" ? values.image : "";
-    const features = typeof values.features === "string" ? values.features : "";
+  const handleSave = async (values: Record<string, FormValue>) => {
+    const features = typeof values.features === "string" && values.features 
+    ? values.features
+     .split("\n")
+     .map((feature) => feature.trim()) 
+     .filter(Boolean) 
+    : [];
 
-    onSave({
-      id: initialData?.id ?? crypto.randomUUID(),
-      title,
-      location,
-      description,
-      image,
-      features: features
-        .split("\n")
-        .map((f) => f.trim())
-        .filter(Boolean),
+    let imageUrl: string | undefined; 
+    if (values.image instanceof File) {
+      imageUrl = await uploadProjectImage(values.image);
+    } else if (typeof values.image === "string" && values.image) { 
+      imageUrl = values.image; 
+    }
+
+    await onSave({
+      title: typeof values.title === "string" ? values.title : "",
+      location: typeof values.location === "string" ? values.location : "",
+      description: typeof values.description === "string" ? values.description : "",
+      image: imageUrl ?? "",
+      features,
     });
   };
 

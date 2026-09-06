@@ -1,14 +1,22 @@
-import manager from "../../assets/manager.webp"
-import member from "../../assets/Portrait_Placeholder.webp"
-
-const teamMembers = [
-  { name: "امیرحسین ملکان", role: "مدیرعامل و مدیر اجرایی", image: manager,},
-  { name: "مائده میرباقری", role: "مدیرمالی و رئیس هیئت مدیره", image: member,},
-  { name: "محمد مهدی خدابنده لو", role: "کارشناس شبکه",image: member,},
-  { name: "فاطمه خدابنده لو", role: "کارشناس طراحی", image: member,},
-];
+import { useEffect, useState } from "react";
+import type { TeamMember } from "../../Types/content";
+import { getTeamMembersRequest } from "../../services/teamService";
 
 const Team = () => {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getTeamMembersRequest()
+      .then(setTeamMembers)
+      .catch((error) => {
+        console.error("خطا در دریافت اعضای تیم:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
   return (
     <section className="bg-white px-8 pb-16 md:py-0 mx-auto max-w-7xl">
       <div className="mb-4 text-center">
@@ -16,6 +24,9 @@ const Team = () => {
         <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary">آشنایی با اعضای تیم</h2>
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600"> پشت هر پروژه موفق، تیمی متخصص و متعهد قرار دارد. اعضای هومت با همکاری و تخصص خود تلاش می‌کنند هر پروژه را با بالاترین کیفیت اجرا کنند.</p>
       </div>
+      {isLoading ? (
+        <p className="text-center text-gray-500">در حال بارگذاری اعضای تیم...</p>
+      ) : (
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {teamMembers.map((member) => (
           <div key={member.name} className="overflow-hidden rounded-3xl bg-gray-50 shadow-md transition-all duration-300">
@@ -27,6 +38,7 @@ const Team = () => {
           </div>
         ))}
       </div>
+      )}
     </section>
   )
 }

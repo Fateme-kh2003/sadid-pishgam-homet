@@ -17,11 +17,7 @@ export function useSupabaseCrud<T extends Identifiable>(config: SupabaseCrudConf
   const [editingItem, setEditingItem] = useState<T | undefined>(undefined);
 
   useEffect(() => {
-    config
-      .getAll()
-      .then(setItems)
-      .catch(() => toast.error("خطا در دریافت اطلاعات از سرور."))
-      .finally(() => setIsLoading(false));
+    config.getAll().then(setItems).catch(() => toast.error("خطا در دریافت اطلاعات از سرور.")).finally(() => setIsLoading(false));
   }, []);
 
   const openAddModal = () => {
@@ -48,8 +44,9 @@ export function useSupabaseCrud<T extends Identifiable>(config: SupabaseCrudConf
         toast.success("با موفقیت اضافه شد.");
       }
       setIsModalOpen(false);
-    } catch {
+    } catch (err) {
       toast.error("خطا در ذخیره‌سازی. دوباره تلاش کنید.");
+      throw err;
     }
   };
 
@@ -58,9 +55,21 @@ export function useSupabaseCrud<T extends Identifiable>(config: SupabaseCrudConf
       await config.remove(id);
       setItems((prev) => prev.filter((i) => i.id !== id));
       toast.success("با موفقیت حذف شد.");
-    } catch {
+    } catch (err) {
       toast.error("خطا در حذف. دوباره تلاش کنید.");
+      throw err;
     }
   };
-  return {items,isLoading,isModalOpen,editingItem,openAddModal,openEditModal,closeModal,handleSave,handleDelete,};
+
+  return {
+    items,
+    isLoading,
+    isModalOpen,
+    editingItem,
+    openAddModal,
+    openEditModal,
+    closeModal,
+    handleSave,
+    handleDelete,
+  };
 }

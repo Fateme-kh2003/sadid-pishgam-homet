@@ -37,3 +37,22 @@ export const uploadProjectImage = async (file: File): Promise<string> => {
 
   return data.publicUrl;
 };
+
+export const uploadTeamImage = async (file: File): Promise<string> => {
+  const fileExt = file.name.split(".").pop();
+  const fileName = `${crypto.randomUUID()}.${fileExt}`;
+
+  const { error: uploadError } = await supabase.storage
+  .from("team-members")
+  .upload(fileName, file);
+
+  if (uploadError) {
+    throw uploadError;
+  }
+
+  const { data } = supabase.storage
+  .from("team-members")
+  .getPublicUrl(fileName);
+  
+  return data.publicUrl;
+};

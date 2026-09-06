@@ -3,28 +3,27 @@ import CompanyInfoForm from "../../components/Admin/About/CompanyInfoForm";
 import AdminTeamMemberCard from "../../components/Admin/About/AdminTeamMemberCard";
 import TeamMemberFormModal from "../../components/Admin/About/TeamMemberFormModal";
 import type { TeamMember } from "../../Types/content";
-import manager from "../../assets/manager.webp";
-import member from "../../assets/Portrait_Placeholder.webp";
+import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
 import Button from "../../components/Ui/Button";
-import useAdminCrud from "../../hooks/useAdminCrud";
-
-const initialTeam: TeamMember[] = [
-  { id: "manager", name: "امیرحسین ملکان", role: "مدیرعامل", image: manager, description: "هدایت مجموعه و توسعه فعالیت‌های هومت با تمرکز بر ارائه راهکارهای نوین.",},
-  { id: "member1", name: "مائده میرباقری", role: "مدیر فنی", image: member, description: "نظارت بر طراحی و اجرای پروژه‌ها و اطمینان از کیفیت فنی خدمات.",},
-  { id: "member2",  name: "محمدمهدی خدابنده لو", role: "مهندس پروژه", image: member, description: "برنامه‌ریزی و نظارت بر اجرای پروژه‌های انرژی خورشیدی.",},
-];
+import { getTeamMembersRequest, addTeamMemberRequest, updateTeamMemberRequest, deleteTeamMemberRequest} from "../../services/teamService";
 
 const AdminAbout = () => {
 const {
     items: team,
+    isLoading,
     isModalOpen,
-    setIsModalOpen,
     editingItem: editingMember,
     openAddModal,
     openEditModal,
+    closeModal,
     handleSave,
     handleDelete,
-  } = useAdminCrud<TeamMember>(initialTeam);
+  } = useSupabaseCrud<TeamMember>({
+    getAll: getTeamMembersRequest,
+    add: addTeamMemberRequest,
+    update: updateTeamMemberRequest,
+    remove: deleteTeamMemberRequest,
+  });
 
   return (
     <div className="space-y-10 mt-4 md:mt-0">
@@ -41,13 +40,17 @@ const {
             افزودن عضو
           </Button>
         </div>
+        {isLoading ? (
+          <p className="mt-6 text-gray-500">در حال بارگذاری...</p>
+        ) : (
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
             <AdminTeamMemberCard key={member.id} member={member} onEdit={() => openEditModal(member)} onDelete={() => handleDelete(member.id)}/>
           ))}
         </div>
+        )}
       </div>
-      <TeamMemberFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} initialData={editingMember}/>
+      <TeamMemberFormModal isOpen={isModalOpen} onClose={closeModal} onSave={handleSave} initialData={editingMember}/>
     </div>
   );
 };

@@ -2,13 +2,14 @@ import EntityFormModal from "../Ui/EntityFormModal";
 import type { FieldConfig } from "../../../Types/forms";
 import type { TeamMember } from "../../../Types/content";
 import placeholderImage from "../../../assets/Portrait_Placeholder.webp";
+import { uploadTeamImage } from "../../../services/storageService";
 
 type FormValue = string | File;
 
 const fields: FieldConfig[] = [
   { name: "name", label: "نام", type: "text", required: true },
   { name: "role", label: "سمت", type: "text", required: true },
-  { name: "image", label: "آدرس تصویر", type: "text" },
+  { name: "image", label: "تصویر عضو تیم", type: "file" },
   { name: "description", label: "توضیحات", type: "textarea", required: true },
 ];
 
@@ -17,16 +18,11 @@ const emptyValues = {name: "",role: "",image: "",description: "",};
 type TeamMemberFormModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (member: TeamMember) => void;
+  onSave: (member: Omit<TeamMember, "id">) => void | Promise<void>;
   initialData?: TeamMember;
 };
 
-const TeamMemberFormModal = ({
-  isOpen,
-  onClose,
-  onSave,
-  initialData,
-}: TeamMemberFormModalProps) => {
+const TeamMemberFormModal = ({isOpen,onClose,onSave,initialData,}: TeamMemberFormModalProps) => {
   const initialValues = initialData
     ? {
         name: initialData.name,
@@ -36,17 +32,24 @@ const TeamMemberFormModal = ({
       }
     : undefined;
 
-  const handleSave = (values: Record<string, FormValue>) => {
+  const handleSave = async (values: Record<string, FormValue>) => {
     const name = typeof values.name === "string" ? values.name : "";
     const role = typeof values.role === "string" ? values.role : "";
-    const image = typeof values.image === "string" ? values.image : "";
     const description =typeof values.description === "string" ? values.description : "";
 
-    onSave({
-      id: initialData?.id ?? crypto.randomUUID(),
+    let imageUrl: string;
+    if (values.image instanceof File) {
+      imageUrl = await uploadTeamImage(values.image);
+    } else if (typeof values.image === "string" && values.image) {
+      imageUrl = values.image;
+    } else {
+      imageUrl = placeholderImage;
+    }
+
+    await onSave({
       name,
       role,
-      image: image.trim() || placeholderImage,
+      image: imageUrl,
       description,
     });
   };

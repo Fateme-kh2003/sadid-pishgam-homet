@@ -10,7 +10,7 @@ import AdminLayout from "./components/Admin/Layout/AdminLayout";
 import Dashboard from "./pages/Admin/Dashboard";
 import AdminProjects from "./pages/Admin/AdminProjects";
 import AdminServices from "./pages/Admin/AdminServices";
-import AdminAbout from "./pages/Admin/AsminAbout";
+import AdminAbout from "./pages/Admin/AdminAbout";
 import AdminFooter from "./pages/Admin/AdminFooter";
 import ChangePassword from "./pages/Admin/ChangePassword";
 import AdminHome from "./pages/Admin/AdminHome";

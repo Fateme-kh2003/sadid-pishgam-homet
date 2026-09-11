@@ -9,16 +9,15 @@ const fields: FieldConfig[] = [
   { name: "title", label: "عنوان سرویس", type: "text", required: true },
   { name: "description", label: "توضیحات", type: "textarea", required: true },
   { name: "emoji", label: "آیکون", type: "text", required: false },
-  { name: "image", label: "تصویر سرویس", type: "file", required: false },
+  { name: "image", label: "تصویر سرویس", type: "file", required: true },
   { name: "features", label: "ویژگی‌های سرویس", type: "textarea", required: false },
 ];
-
 const emptyValues = { title: "", description: "", emoji: "", image: "", features: "" };
 
 type ServiceFormModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (service: Omit<ServiceItem, "id">) => void;
+  onSave: (service: Omit<ServiceItem, "id">) => void | Promise<void>;
   initialData?: ServiceItem;
 };
 
@@ -41,7 +40,7 @@ const ServiceFormModal = ({ isOpen, onClose, onSave, initialData }: ServiceFormM
             .filter(Boolean)
         : [];
 
-    let imageUrl: string | undefined;
+    let imageUrl = "";
     if (values.image instanceof File) {
       imageUrl = await uploadServiceImage(values.image);
     } else if (typeof values.image === "string" && values.image) {

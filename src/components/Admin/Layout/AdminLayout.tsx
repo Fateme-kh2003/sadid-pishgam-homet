@@ -16,27 +16,24 @@ const navItems: AdminNavItem[] = [
   { label: "تغییر رمز عبور", path: "/admin/change-password", icon: KeyRound },
 ];
 
-const navLinkClass = (isActive: boolean) =>
-  `flex items-center gap-3 rounded-xl px-3 py-3 transition ${
-    isActive ? "bg-secondary text-primary" : "text-gray-200 hover:bg-white/10"
-  }`;
+const navLinkClass = (isActive: boolean) =>`flex items-center gap-3 rounded-xl px-3 py-3 transition ${ isActive ? "bg-secondary text-primary" : "text-gray-200 hover:bg-white/10"}`;
 
 const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
-const handleLogout = async () => {
-  try {
-    const { error } = await logoutRequest();
-    if (error) {
-      console.error(error);
-      return;
+  const handleLogout = async () => {
+    try {
+      const { error } = await logoutRequest();
+      if (error) {
+        console.error(error);
+        return;
+      }
+      navigate("/");
+    } catch (error) {
+      console.error("خطا در خروج از حساب:", error);
     }
-    navigate("/");
-  } catch (error) {
-    console.error("خطا در خروج از حساب:", error);
-  }
-};
+  };
 
   return (
     <div className="flex bg-gray-50">

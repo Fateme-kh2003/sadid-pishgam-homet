@@ -1,40 +1,40 @@
-import { useState } from "react";
 import ContentForm from "../Ui/ContentForm";
-import type { ContactInfo } from "../../../Types/content";
+import type { FieldConfig } from "../../../Types/forms";
+import { useSiteContent } from "../../../hooks/useSiteContent";
+import {SpinnerMini} from "../../../components/Ui/Spinner"
 
-const initialContactInfo: ContactInfo = {address: "سمنان، شاهرود، میدان ولایت، بلوار شیرودی قبل از اخلاقی", phone: "0912 123 4567", email: "info@hoomat.ir", instagram: "hoomat.co",};
+type FormValue = string | File;
 
-const AdminContact = () => {
-  const [contactInfo, setContactInfo] =useState<ContactInfo>(initialContactInfo);
+const fields: FieldConfig[] = [
+  { name: "address", label: "آدرس", type: "text", required: true, }, 
+  { name: "phone", label: "تلفن", type: "text", required: true, }, 
+  { name: "email", label: "ایمیل", type: "text", required: true, }, 
+  { name: "instagram", label: "اینستاگرام", type: "text", required: true, }, 
+];
+const emptyValues: Record<string, FormValue> = { address: "", phone: "", email: "", instagram: "", };
+
+const ContactInfoForm = () => {
+ const { content, isLoading, saveContent, } = useSiteContent(["contact-info"]);
+
+  const handleSave = async ( values: Record<string, FormValue> ) => {
+    const address = typeof values.address === "string" ? values.address : "";
+    const phone = typeof values.phone === "string" ? values.phone : ""; 
+    const email = typeof values.email === "string" ? values.email : ""; 
+    const instagram = typeof values.instagram === "string" ? values.instagram : ""; 
+
+    await saveContent("contact-info", { address, phone, email, instagram, }); 
+  };
+
+  if (isLoading) return <SpinnerMini/>;
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-primary"> مدیریت اطلاعات تماس</h1>
-      <p className="mt-2 text-gray-600"> مدیریت اطلاعات تماس نمایش داده‌شده در سایت</p>
-      <div className="mt-8">
-        <ContentForm
-          heading="اطلاعات تماس"
-          helperText="این اطلاعات در فوتر سایت نمایش داده می‌شود."
-          initialValues={contactInfo}
-          onSave={(values) => {
-            setContactInfo({
-              address: values.address,
-              phone: values.phone,
-              email: values.email,
-              instagram: values.instagram,
-            });
-            console.log(values);
-          }}
-          fields={[
-            { name: "address", label: "آدرس", type: "text", required: true,},
-            { name: "phone", label: "تلفن", type: "text", required: true,},
-            { name: "email", label: "ایمیل", type: "text", required: true,},
-            { name: "instagram", label: "اینستاگرام", type: "text", required: true,},
-          ]}
-        />
-      </div>
-    </div>
+    <ContentForm 
+      heading="اطلاعات تماس" 
+      helperText="این اطلاعات در فوتر سایت نمایش داده می‌شود." 
+      fields={fields} initialValues={content["contact-info"] ?? emptyValues} 
+      onSave={handleSave} 
+      />
   );
 };
 
-export default AdminContact;
+export default ContactInfoForm;

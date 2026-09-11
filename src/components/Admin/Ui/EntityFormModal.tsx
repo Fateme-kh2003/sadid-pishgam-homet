@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import Modal from "../../Ui/Modal";
 import Button from "../../Ui/Button";
 import type { FieldConfig } from "../../../Types/forms";
+import {SpinnerMini} from "../../../components/Ui/Spinner"
 
 const inputClass ="w-full rounded-xl border border-gray-200 px-4 py-3 text-right outline-none transition focus:border-secondary";
-
 type FormValue = string | File;
 
 type EntityFormModalProps = {
@@ -35,16 +35,17 @@ const EntityFormModal = ({isOpen,onClose,onSave,initialValues,emptyValues,fields
     return typeof value === "string" ? value : "";
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSaving(true);
-    try {
-      await onSave(formData);
-      onClose();
-    } finally {
-      setIsSaving(false);
-    }
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSaving(true);
+  try {
+    await onSave(formData);
+    onClose();
+  } catch {
+  } finally {
+    setIsSaving(false);
+  }
+};
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={isEditing ? editTitle : addTitle}>
@@ -88,7 +89,7 @@ const EntityFormModal = ({isOpen,onClose,onSave,initialValues,emptyValues,fields
           </div>
         ))}
         <Button type="submit" disabled={isSaving} className="w-full rounded-xl bg-primary py-3 font-semibold text-white transition hover:scale-105 disabled:opacity-60">
-          {isSaving ? "در حال ذخیره..." : isEditing ? submitEditLabel : submitAddLabel}
+          {isSaving ? <SpinnerMini/> : isEditing ? submitEditLabel : submitAddLabel}
         </Button>
       </form>
     </Modal>

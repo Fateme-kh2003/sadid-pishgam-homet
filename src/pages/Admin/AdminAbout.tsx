@@ -6,6 +6,7 @@ import type { TeamMember } from "../../Types/content";
 import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
 import Button from "../../components/Ui/Button";
 import { getTeamMembersRequest, addTeamMemberRequest, updateTeamMemberRequest, deleteTeamMemberRequest} from "../../services/teamService";
+import {SpinnerMini} from "../../components/Ui/Spinner"
 
 const AdminAbout = () => {
 const {
@@ -40,8 +41,7 @@ const {
             افزودن عضو
           </Button>
         </div>
-        {isLoading ? (
-          <p className="mt-6 text-gray-500">در حال بارگذاری...</p>
+        {isLoading ? ( <SpinnerMini/>
         ) : (
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (

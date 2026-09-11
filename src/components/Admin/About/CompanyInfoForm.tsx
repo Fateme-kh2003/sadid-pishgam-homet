@@ -1,35 +1,46 @@
-import ContentForm from "../Ui/ContentForm";
-import type { FieldConfig } from "../../../Types/forms";
+import ContentForm from "../Ui/ContentForm"
+import type { FieldConfig } from "../../../Types/forms"
+import { useSiteContent } from "../../../hooks/useSiteContent"
+import {SpinnerMini} from "../../../components/Ui/Spinner"
 
-const currentTitle = "همراه شما برای انرژی پاک و امنیت پایدار";
-
-const currentText = [
-  "هومت با تمرکز بر ارائه راهکارهای نوین در حوزه انرژی خورشیدی و سیستم‌های امنیتی، فعالیت خود را با هدف ارائه خدمات تخصصی و قابل اعتماد به مشتریان آغاز کرده است.",
-  "ما تلاش می‌کنیم با استفاده از تجهیزات باکیفیت، دانش فنی و اجرای دقیق، راهکارهایی متناسب با نیاز هر پروژه ارائه دهیم. از مشاوره و طراحی اولیه تا تأمین تجهیزات، نصب و پشتیبانی، در کنار مشتریان خود هستیم تا تجربه‌ای مطمئن و رضایت‌بخش ایجاد کنیم.",
-  "باور ما این است که استفاده هوشمندانه از انرژی پاک در کنار راهکارهای نوین امنیتی می‌تواند نقش مهمی در ساخت آینده‌ای پایدارتر و ایمن‌تر داشته باشد.",
-].join("\n\n");
+type FormValue = string | File;
 
 const fields: FieldConfig[] = [
   { name: "title",label: "عنوان", type: "text", required: true,},
-  { name: "text", label: "متن معرفی", type: "textarea", required: true,},
+  { name: "text", label: "توضیحات", type: "textarea", required: true,},
+];
+const emptyValues: Record<string, FormValue> = { title: "", text: "",};
+
+const sections = [
+  { section: "company-info", heading: "متن درباره ما", helperText: "این متن در صفحه‌ی درباره ما نمایش داده می‌شود.", },
+  { section: "team-intro", heading: "متن تیم ما", helperText: "این متن در صفحه‌ی درباره ما بالای اعضای تیم نمایش داده می‌شود.", }, 
 ];
 
 const CompanyInfoForm = () => {
-  const handleSave = (values: Record<string, string>) => {
-    console.log(values);
+  const {content,isLoading,saveContent,} = useSiteContent(sections.map((item) => item.section));
+
+  const handleSave = async (section: string, values: Record<string, FormValue>) => {
+    const title =typeof values.title === "string"? values.title: "";
+    const text = typeof values.text === "string" ? values.text : "";
+
+    await saveContent(section, { title, text, });
   };
 
+  if (isLoading) return <SpinnerMini />;
+
   return (
-    <ContentForm
-      heading="متن درباره ما"
-      helperText="این متن در صفحه‌ی درباره ما نمایش داده می‌شود."
-      fields={fields}
-      initialValues={{
-        title: currentTitle,
-        text: currentText,
-      }}
-      onSave={handleSave}
-    />
+    <div className="space-y-6">
+      {sections.map((item) => (
+        <ContentForm 
+          key={item.section} 
+          heading={item.heading} 
+          helperText={item.helperText} 
+          fields={fields} 
+          initialValues={ content[item.section] ?? emptyValues } 
+          onSave={(values) => handleSave(item.section, values) } 
+        /> 
+      ))}
+    </div>
   );
 };
 

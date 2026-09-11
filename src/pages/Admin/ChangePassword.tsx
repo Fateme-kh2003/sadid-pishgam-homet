@@ -18,14 +18,12 @@ const ChangePassword = () => {
     }
 
     setError("");
-    // فعلاً بدون بک‌اند — فقط UI
     console.log({ currentPassword, newPassword });
   };
 
   return (
     <div className="mt-8 mx-auto max-w-md rounded-3xl bg-white p-6 shadow-md">
       <h1 className="text-xl md:text-3xl font-bold text-primary">تغییر رمز عبور</h1>
-      <div className="max-w-md rounded-3xl bg-white p-2">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="mb-2 block text-sm font-medium text-gray-700">رمز عبور فعلی</label>
@@ -62,7 +60,6 @@ const ChangePassword = () => {
             ذخیره تغییرات
           </Button>
         </form>
-      </div>
     </div>
   );
 };

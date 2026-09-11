@@ -4,7 +4,8 @@ import ServiceFormModal from "../../components/Admin/Services/ServiceFormModal";
 import type { ServiceItem } from "../../Types/content";
 import Button from "../../components/Ui/Button";
 import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
-import { getServicesRequest, addServiceRequest, updateServiceRequest, deleteServiceRequest,} from "../../services/Servicesservice";
+import {getServicesRequest, addServiceRequest, updateServiceRequest, deleteServiceRequest} from "../../services/servicesService";
+import { SpinnerMini } from "../../components/Ui/Spinner";
 
 const AdminServices = () => {
   const {
@@ -29,15 +30,20 @@ const AdminServices = () => {
       <div className="md:flex mt-4 md:mt-0 items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-primary">مدیریت خدمات</h1>
-          <p className="mt-2 mb-4 md:mb-0 text-gray-600">افزودن، ویرایش یا حذف خدمات نمایش داده‌شده در سایت</p>
+          <p className="mt-2 mb-4 md:mb-0 text-gray-600">
+            افزودن، ویرایش یا حذف خدمات نمایش داده‌شده در سایت
+          </p>
         </div>
-        <Button onClick={openAddModal} className="flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-white transition hover:scale-105">
+        <Button
+          onClick={openAddModal}
+          className="flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-white transition hover:scale-105"
+        >
           <Plus size={20} />
           افزودن سرویس
         </Button>
       </div>
       {isLoading ? (
-        <p className="mt-8 text-gray-500">در حال بارگذاری...</p>
+        <SpinnerMini />
       ) : (
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
@@ -50,7 +56,12 @@ const AdminServices = () => {
           ))}
         </div>
       )}
-      <ServiceFormModal isOpen={isModalOpen} onClose={closeModal} onSave={handleSave} initialData={editingService}/>
+      <ServiceFormModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onSave={handleSave}
+        initialData={editingService}
+      />
     </div>
   );
 };

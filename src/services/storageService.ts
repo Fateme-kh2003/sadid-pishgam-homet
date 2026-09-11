@@ -1,58 +1,17 @@
 import { supabase } from "../lib/supabaseClint";
 
-export const uploadServiceImage = async (file: File): Promise<string> => {
+export const uploadImage = async (bucket: string,file: File): Promise<string> => {
   const fileExt = file.name.split(".").pop();
   const fileName = `${crypto.randomUUID()}.${fileExt}`;
 
-  const { error: uploadError } = await supabase.storage
-    .from("services")
-    .upload(fileName, file);
+  const { error } = await supabase.storage.from(bucket).upload(fileName, file);
+  if (error) throw error;
 
-  if (uploadError) {
-    throw uploadError;
-  }
-
-  const { data } = supabase.storage
-    .from("services")
-    .getPublicUrl(fileName);
-
+  const { data } = supabase.storage.from(bucket).getPublicUrl(fileName);
   return data.publicUrl;
 };
 
-export const uploadProjectImage = async (file: File): Promise<string> => {
-  const fileExt = file.name.split(".").pop();
-  const fileName = `${crypto.randomUUID()}.${fileExt}`;
-
-  const { error: uploadError } = await supabase.storage
-    .from("projects")
-    .upload(fileName, file);
-
-  if (uploadError) {
-    throw uploadError;
-  }
-
-  const { data } = supabase.storage
-    .from("projects")
-    .getPublicUrl(fileName);
-
-  return data.publicUrl;
-};
-
-export const uploadTeamImage = async (file: File): Promise<string> => {
-  const fileExt = file.name.split(".").pop();
-  const fileName = `${crypto.randomUUID()}.${fileExt}`;
-
-  const { error: uploadError } = await supabase.storage
-  .from("team-members")
-  .upload(fileName, file);
-
-  if (uploadError) {
-    throw uploadError;
-  }
-
-  const { data } = supabase.storage
-  .from("team-members")
-  .getPublicUrl(fileName);
-  
-  return data.publicUrl;
-};
+export const uploadServiceImage = (file: File): Promise<string> => uploadImage("services", file);
+export const uploadProjectImage = (file: File): Promise<string> => uploadImage("projects", file);
+export const uploadTeamImage = (file: File): Promise<string> => uploadImage("team-members", file);
+export const uploadSiteContentImage = (file: File): Promise<string> => uploadImage("site-content", file);

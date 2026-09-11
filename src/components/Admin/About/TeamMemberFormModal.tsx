@@ -12,7 +12,6 @@ const fields: FieldConfig[] = [
   { name: "image", label: "تصویر عضو تیم", type: "file" },
   { name: "description", label: "توضیحات", type: "textarea", required: true },
 ];
-
 const emptyValues = {name: "",role: "",image: "",description: "",};
 
 type TeamMemberFormModalProps = {
@@ -46,12 +45,7 @@ const TeamMemberFormModal = ({isOpen,onClose,onSave,initialData,}: TeamMemberFor
       imageUrl = placeholderImage;
     }
 
-    await onSave({
-      name,
-      role,
-      image: imageUrl,
-      description,
-    });
+    await onSave({ name, role, image: imageUrl, description,});
   };
 
   return (

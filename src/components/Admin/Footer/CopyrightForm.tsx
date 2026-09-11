@@ -1,31 +1,31 @@
-import { useState } from "react";
-import Button from "../../Ui/Button";
+import ContentForm from "../Ui/ContentForm"; 
+import type { FieldConfig } from "../../../Types/forms";
+import { useSiteContent } from "../../../hooks/useSiteContent";
+import {SpinnerMini} from "../../../components/Ui/Spinner"
 
-const currentCopyright = "© 2026 Hoomat. All rights reserved.";
+type FormValue = string | File;
+
+const fields: FieldConfig[] = [ { name: "text", label: "متن کپی‌رایت", type: "text", required: true, }, ];
+const emptyValues: Record<string, FormValue> = { text: "", };
 
 const CopyrightForm = () => {
-  const [copyrightText, setCopyrightText] = useState(currentCopyright);
+  const { content, isLoading, saveContent, } = useSiteContent(["copyright"]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ copyrightText });
+  const handleSave = async ( values: Record<string, FormValue> ) => {
+    const text = typeof values.text === "string" ? values.text : ""; 
+    await saveContent("copyright", { text, }); 
   };
 
+  if (isLoading) return <SpinnerMini/>;
+  
   return (
-    <div className="rounded-3xl bg-white p-6 shadow-md">
-      <h2 className="text-xl font-bold text-primary">متن کپی‌رایت</h2>
-      <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4 md:flex-row">
-        <input
-          type="text"
-          value={copyrightText}
-          onChange={(e) => setCopyrightText(e.target.value)}
-          className="w-full rounded-xl border border-gray-200 px-4 py-3 text-right outline-none transition focus:border-secondary"
-        />
-        <Button type="submit" className="whitespace-nowrap rounded-xl bg-primary px-6 py-3 font-semibold text-white transition hover:bg-secondary hover:text-primary">
-          ذخیره
-        </Button>
-      </form>
-    </div>
+    <ContentForm 
+      heading="متن کپی‌رایت" 
+      helperText="این متن در پایین فوتر سایت نمایش داده می‌شود." 
+      fields={fields} 
+      initialValues={content["copyright"] ?? emptyValues} 
+      onSave={handleSave} 
+      />
   );
 };
 

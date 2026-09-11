@@ -12,13 +12,12 @@ const fields: FieldConfig[] = [
   { name: "image", label: "تصویر پروژه", type: "file" , required: false},
   { name: "features", label: "ویژگی‌ها (هر خط یک ویژگی)", type: "textarea", required:false},
 ];
-
 const emptyValues = { title: "", location: "", description: "", image: "", features: "" };
 
 type ProjectFormModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (project: Omit<ProjectDetail, "id">) => void;
+  onSave: (project: Omit<ProjectDetail, "id">) => void | Promise<void>;
   initialData?: ProjectDetail;
 };
 

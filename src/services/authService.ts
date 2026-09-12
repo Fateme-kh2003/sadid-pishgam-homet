@@ -17,3 +17,9 @@ export const getSessionRequest = async () => {
   const { data } = await supabase.auth.getSession();
   return data.session;
 };
+
+export const changePasswordRequest = (newPassword: string) => {
+  return supabase.auth.updateUser({
+    password: newPassword,
+  })
+};

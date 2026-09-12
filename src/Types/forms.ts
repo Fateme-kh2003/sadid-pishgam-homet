@@ -6,5 +6,4 @@ export type FieldConfig = {
   type: FieldType;
   placeholder?: string;
   required?: boolean;
-  options?: { label: string; value: string }[];
 };

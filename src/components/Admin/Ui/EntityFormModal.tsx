@@ -83,7 +83,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   }
                 }}
                 className={`${inputClass} cursor-pointer`}
-                required={field.required}
+                required={field.required && !isEditing}
               />
             )}
           </div>

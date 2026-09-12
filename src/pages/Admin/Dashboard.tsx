@@ -1,4 +1,9 @@
-import { FolderKanban, Wrench, Users, ShieldCheck } from "lucide-react";
+import { useEffect, useState } from "react";
+import { FolderKanban, Wrench, Users } from "lucide-react";
+import { getProjectsRequest } from "../../services/projectService";
+import { getServicesRequest } from "../../services/servicesService";
+import { getTeamMembersRequest } from "../../services/teamService";
+import { SpinnerMini } from "../../components/Ui/Spinner";
 
 export type StatCard = {
   label: string;
@@ -6,19 +11,32 @@ export type StatCard = {
   icon: React.ElementType;
 };
 
-const stats: StatCard[] = [
-  { label: "پروژه‌ها", value: 3, icon: FolderKanban },
-  { label: "خدمات", value: 4, icon: Wrench },
-  { label: "اعضای تیم", value: 6, icon: Users },
-  { label: "ادمین‌ها", value: 1, icon: ShieldCheck },
-];
-
 const Dashboard = () => {
+  const [counts, setCounts] = useState<{ projects: number; services: number; team: number } | null>(null);
+
+  useEffect(() => {
+    Promise.all([getProjectsRequest(), getServicesRequest(), getTeamMembersRequest()])
+      .then(([projects, services, team]) => {
+        setCounts({ projects: projects.length, services: services.length, team: team.length });
+      })
+      .catch((error) => {
+        console.error("خطا در دریافت آمار داشبورد:", error);
+      });
+  }, []);
+
+  if (!counts) return <SpinnerMini />;
+
+  const stats: StatCard[] = [
+    { label: "پروژه‌ها", value: counts.projects, icon: FolderKanban },
+    { label: "خدمات", value: counts.services, icon: Wrench },
+    { label: "اعضای تیم", value: counts.team, icon: Users },
+  ];
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-primary">داشبورد</h1>
       <p className="mt-2 text-gray-600">خلاصه‌ای از وضعیت کلی سایت</p>
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (

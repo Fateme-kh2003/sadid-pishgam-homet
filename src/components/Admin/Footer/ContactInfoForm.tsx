@@ -1,7 +1,5 @@
 import ContentForm from "../Ui/ContentForm";
 import type { FieldConfig } from "../../../Types/forms";
-import { useSiteContent } from "../../../hooks/useSiteContent";
-import {SpinnerMini} from "../../../components/Ui/Spinner"
 
 type FormValue = string | File;
 
@@ -13,9 +11,15 @@ const fields: FieldConfig[] = [
 ];
 const emptyValues: Record<string, FormValue> = { address: "", phone: "", email: "", instagram: "", };
 
-const ContactInfoForm = () => {
- const { content, isLoading, saveContent, } = useSiteContent(["contact-info"]);
+type ContactInfoFormProps = {
+  content: Record<string, string> | null;
+  saveContent: (
+    section: string,
+    data: Record<string, string>
+  ) => Promise<void>;
+};
 
+const ContactInfoForm = ({content, saveContent,}: ContactInfoFormProps) => {
   const handleSave = async ( values: Record<string, FormValue> ) => {
     const address = typeof values.address === "string" ? values.address : "";
     const phone = typeof values.phone === "string" ? values.phone : ""; 
@@ -25,13 +29,12 @@ const ContactInfoForm = () => {
     await saveContent("contact-info", { address, phone, email, instagram, }); 
   };
 
-  if (isLoading) return <SpinnerMini/>;
-
   return (
     <ContentForm 
       heading="اطلاعات تماس" 
       helperText="این اطلاعات در فوتر سایت نمایش داده می‌شود." 
-      fields={fields} initialValues={content["contact-info"] ?? emptyValues} 
+      fields={fields} 
+      initialValues={content ?? emptyValues} 
       onSave={handleSave} 
       />
   );

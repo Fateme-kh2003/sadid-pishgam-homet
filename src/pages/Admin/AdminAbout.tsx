@@ -6,12 +6,15 @@ import type { TeamMember } from "../../Types/content";
 import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
 import Button from "../../components/Ui/Button";
 import { getTeamMembersRequest, addTeamMemberRequest, updateTeamMemberRequest, deleteTeamMemberRequest} from "../../services/teamService";
+import { useSiteContent } from "../../hooks/useSiteContent";
 import {SpinnerMini} from "../../components/Ui/Spinner"
+
+const sections = ["company-info", "team-intro"];
 
 const AdminAbout = () => {
 const {
     items: team,
-    isLoading,
+    isLoading: isTeamLoading,
     isModalOpen,
     editingItem: editingMember,
     openAddModal,
@@ -25,6 +28,10 @@ const {
     update: updateTeamMemberRequest,
     remove: deleteTeamMemberRequest,
   });
+  
+  const { content, isLoading: isContentLoading, saveContent,} = useSiteContent(sections);
+  const isLoading = isTeamLoading || isContentLoading;
+  if (isLoading) { return <SpinnerMini />;}
 
   return (
     <div className="space-y-10 mt-4 md:mt-0">
@@ -32,7 +39,7 @@ const {
         <h1 className="text-3xl font-bold text-primary">درباره ما و تیم</h1>
         <p className="mt-2 text-gray-600">ویرایش متن معرفی شرکت و مدیریت اعضای تیم</p>
       </div>
-      <CompanyInfoForm />
+      <CompanyInfoForm content={content} saveContent={saveContent}/>
       <div>
         <div className="md:flex items-center justify-between">
           <h2 className="text-xl font-bold text-primary mb-5">اعضای تیم</h2>
@@ -41,14 +48,11 @@ const {
             افزودن عضو
           </Button>
         </div>
-        {isLoading ? ( <SpinnerMini/>
-        ) : (
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
             <AdminTeamMemberCard key={member.id} member={member} onEdit={() => openEditModal(member)} onDelete={() => handleDelete(member.id)}/>
           ))}
         </div>
-        )}
       </div>
       <TeamMemberFormModal isOpen={isModalOpen} onClose={closeModal} onSave={handleSave} initialData={editingMember}/>
     </div>

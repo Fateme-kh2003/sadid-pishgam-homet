@@ -24,7 +24,11 @@ const Team = () => {
       });
   }, []);
 
-  if (isLoading) return <SpinnerMini />;
+  if (isLoading) return (
+    <div className="pt-32">
+      <SpinnerMini />
+    </div>
+  );
   if (!content) {return null;}
 
   return (

@@ -17,7 +17,7 @@ export const MultilineText = ({ text }: MultilineTextProps) => {
 };
 
 type ParagraphsProps = {
-  text: string;
+  text: string; 
   className: string;
   firstClassName?: string;
   restClassName?: string;

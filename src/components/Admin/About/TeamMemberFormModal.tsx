@@ -10,9 +10,8 @@ const fields: FieldConfig[] = [
   { name: "name", label: "نام", type: "text", required: true },
   { name: "role", label: "سمت", type: "text", required: true },
   { name: "image", label: "تصویر عضو تیم", type: "file" },
-  { name: "description", label: "توضیحات", type: "textarea", required: true },
 ];
-const emptyValues = {name: "",role: "",image: "",description: "",};
+const emptyValues = {name: "",role: "",image: ""};
 
 type TeamMemberFormModalProps = {
   isOpen: boolean;
@@ -27,14 +26,12 @@ const TeamMemberFormModal = ({isOpen,onClose,onSave,initialData,}: TeamMemberFor
         name: initialData.name,
         role: initialData.role,
         image: initialData.image,
-        description: initialData.description,
       }
     : undefined;
 
   const handleSave = async (values: Record<string, FormValue>) => {
     const name = typeof values.name === "string" ? values.name : "";
     const role = typeof values.role === "string" ? values.role : "";
-    const description =typeof values.description === "string" ? values.description : "";
 
     let imageUrl: string;
     if (values.image instanceof File) {
@@ -45,7 +42,7 @@ const TeamMemberFormModal = ({isOpen,onClose,onSave,initialData,}: TeamMemberFor
       imageUrl = placeholderImage;
     }
 
-    await onSave({ name, role, image: imageUrl, description,});
+    await onSave({ name, role, image: imageUrl , description: ""});
   };
 
   return (

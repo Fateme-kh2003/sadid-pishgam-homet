@@ -35,7 +35,7 @@ const Hero = () => {
             <h1 className="mb-6 text-4xl font-bold leading-relaxed">
               <MultilineText text={content.title} />
             </h1>
-            <p className="mb-8 md:mb-8 text-xl leading-8 text-gray-200">{content.description}</p>
+            <p className="mb-8 md:mb-8 whitespace-pre-line text-xl leading-8 text-gray-200">{content.description}</p>
             <div className="flex gap-4">  
               <a href="https://wa.me/989120812787" className={`${ctaButtonClass} bg-secondary text-primary`}>مشاوره رایگان</a>
               <a href="#projects" className={`${ctaButtonClass} border bg-primary/80 border-primary text-center`}>مشاهده پروژه ها</a>

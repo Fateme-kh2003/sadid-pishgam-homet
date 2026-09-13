@@ -69,13 +69,9 @@ const handleSubmit = async (e: React.FormEvent) => {
             {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
           </Button>
         </div>
-        <div className="flex items-center gap-2">
-          <input type="checkbox" id="remember" className="h-4 w-4 accent-secondary" />
-          <label htmlFor="remember" className="text-sm text-gray-600">مرا به خاطر بسپار</label>
-        </div>
         {isLoading ? <SpinnerMini/> 
         : 
-        <Button type="submit" disabled={isLoading} className="w-full rounded-xl bg-primary py-3 font-semibold text-white transition hover:scale-101 disabled:opacity-60">
+        <Button type="submit" disabled={isLoading} className="w-full mt-4 rounded-xl bg-primary py-3 font-semibold text-white transition hover:scale-101 disabled:opacity-60">
          ورود
         </Button> }
       </form>

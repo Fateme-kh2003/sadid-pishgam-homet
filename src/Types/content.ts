@@ -59,3 +59,8 @@ export type HeroContent = TitleDescriptionContent & {
 export type ServicesIntroContent = TitleDescriptionContent & {
   subtitle: string;
 };
+
+export type SearchResult = BaseEntity &
+  NavItem & {
+    type: "service" | "project";
+  };

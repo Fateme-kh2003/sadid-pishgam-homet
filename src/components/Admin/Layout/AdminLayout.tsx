@@ -5,6 +5,7 @@ import Button from "../../Ui/Button";
 import type { AdminNavItem } from "../../../Types/nav";
 import { useNavigate } from "react-router";
 import { logoutRequest } from "../../../services/authService";
+import logo from "../../../assets/logo.svg"
 
 const navItems: AdminNavItem[] = [
   { label: "داشبورد", path: "/admin", icon: LayoutDashboard },
@@ -39,7 +40,11 @@ const AdminLayout = () => {
     <div className="flex bg-gray-50">
       <aside className={`sticky top-0 h-screen shrink-0 bg-primary text-white transition-all duration-300 ${isOpen ? "w-42 md:w-64" : "w-16 md:w-20"}`}>
         <div className="flex items-center justify-between px-4 py-5">
-          {isOpen && <span className="text-2xl font-bold">Hoomat</span>}
+          {isOpen && 
+            <div className="flex w-fit items-center justify-center rounded-xl bg-secondary px-4 py-2 mx-auto">
+              <img src={logo} alt="هومت" className="h-20 w-auto" />
+            </div>
+          }
           <Button onClick={() => setIsOpen((prev) => !prev)} className="rounded-lg p-2 transition hover:bg-white/10">
             {isOpen ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
           </Button>

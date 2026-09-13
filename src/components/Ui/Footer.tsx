@@ -5,6 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 import type { IconItem } from "../../Types/content";
 import type { NavItem } from "../../Types/nav";
 import { getSiteContentRequest } from "../../services/siteContentService";
+import logo from "../../assets/logo.svg"
 
 const navLinks: NavItem[] = [
   { path:"/" , label: "صفحه اصلی"},
@@ -40,8 +41,10 @@ const Footer = () => {
       </div>
       <div className="mx-auto max-w-7xl px-8 pb-8 pt-63 md:pt-40">
         <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-3">
-          <div>
-            <h2 className="text-4xl font-bold">Hoomat</h2>
+          <div className="text-center">
+            <div className="flex w-fit items-center justify-center rounded-xl bg-secondary px-4 py-2 mx-auto">
+              <img src={logo} alt="هومت" className="h-20 w-auto" />
+            </div>
             <p className="mt-5 text-lg md:text-base leading-8 text-gray-300"> ارائه‌دهنده راهکارهای نوین در حوزه انرژی خورشیدی و سیستم‌های امنیتی با تمرکز بر کیفیت، نوآوری و رضایت مشتری.</p>
           </div>
           <div>

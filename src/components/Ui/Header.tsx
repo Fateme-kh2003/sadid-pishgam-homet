@@ -9,6 +9,7 @@ import { getServicesRequest } from "../../services/servicesService";
 import { getProjectsRequest } from "../../services/projectService";
 import type { DropdownLink } from "../../Types/nav";
 import type {SearchResult} from "../../Types/content"
+import logo2 from "../../assets/logo2 (2).svg"
     
 const navLinkClass = (isActive: boolean, extra = "") =>`rounded-xl transition ${extra} ${isActive? "bg-secondary text-primary": "hover:bg-secondary hover:text-primary"}`;
 
@@ -61,7 +62,9 @@ const Header = () => {
   return (
     <header className="fixed top-6 md:top-4  left-1/2 w-[calc(100%-2rem)] md:w-auto  -translate-x-1/2 z-50 rounded-3xl bg-primary/80 px-5 py-2 backdrop-blur-md md:px-8">
       <div className="flex h-9 items-center justify-between">
-        <Link to="/" className="text-white text-4xl font-semibold">Hoomat</Link>
+        <Link to="/" className="flex items-center rounded-full bg-secondary px-3 py-1">
+          <img src={logo2} alt="هومت" className="h-9 w-auto" />
+        </Link>
         <div className="hidden md:flex items-center text-white gap-3 mr-3">
           {dropdowns.map((dropdown) => (
             <DropdownMenu key={dropdown.path} {...dropdown} />

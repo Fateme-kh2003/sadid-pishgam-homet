@@ -8,7 +8,11 @@ const sections = ["contact-info", "copyright"];
 const AdminFooter = () => {
   const { content, isLoading, saveContent } = useSiteContent(sections);
 
-  if (isLoading) { return <SpinnerMini />;}
+  if (isLoading) return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <SpinnerMini />
+    </div>
+  );
 
   return (
     <div className="space-y-10 mt-4 md:mt-0">

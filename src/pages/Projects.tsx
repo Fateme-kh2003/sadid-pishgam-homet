@@ -22,7 +22,9 @@ const Projects = () => {
   return (
     <main className="bg-gray-50 pt-22 md:pt-20">
       {isLoading ? (
-        <SpinnerMini />
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <SpinnerMini />
+        </div>
       ) : (
         projects.map((project, index) => (
           <DetailCard

@@ -31,7 +31,11 @@ const {
   
   const { content, isLoading: isContentLoading, saveContent,} = useSiteContent(sections);
   const isLoading = isTeamLoading || isContentLoading;
-  if (isLoading) { return <SpinnerMini />;}
+  if (isLoading) return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <SpinnerMini />
+    </div>
+  );
 
   return (
     <div className="space-y-10 mt-4 md:mt-0">

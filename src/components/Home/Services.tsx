@@ -44,7 +44,9 @@ const Services = () => {
         </p>
       </div>
       {isLoading ? (
-        <SpinnerMini />
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <SpinnerMini />
+        </div>
       ) : (
         <div className="grid grid-cols-2 gap-4 md:gap-8">
           {services.map((service) => (

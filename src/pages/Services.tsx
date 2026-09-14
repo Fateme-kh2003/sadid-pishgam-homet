@@ -21,7 +21,11 @@ const Services = () => {
 
   return (
     <main className="bg-gray-50 pt-20 md:pt-22">
-      {isLoading ? (<SpinnerMini />) 
+      {isLoading ? (
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <SpinnerMini />
+        </div>
+      ) 
       : (
         services.map((service, index) => (
           <DetailCard

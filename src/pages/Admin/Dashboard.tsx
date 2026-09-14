@@ -24,7 +24,11 @@ const Dashboard = () => {
       });
   }, []);
 
-  if (!counts) return <SpinnerMini />;
+  if (!counts) return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <SpinnerMini />
+    </div>
+  );
 
   const stats: StatCard[] = [
     { label: "پروژه‌ها", value: counts.projects, icon: FolderKanban },

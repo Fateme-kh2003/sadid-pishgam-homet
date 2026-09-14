@@ -30,7 +30,9 @@ const Projects = () => {
         </h2>
       </div>
       {isLoading ? (
-        <SpinnerMini />
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <SpinnerMini />
+        </div>
       ) : (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 mx-10 md:mx-20">
           {projects.slice(0, 3).map((project) => (

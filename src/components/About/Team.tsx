@@ -25,7 +25,7 @@ const Team = () => {
   }, []);
 
   if (isLoading) return (
-    <div className="pt-32">
+    <div className="flex min-h-screen items-center justify-center">
       <SpinnerMini />
     </div>
   );

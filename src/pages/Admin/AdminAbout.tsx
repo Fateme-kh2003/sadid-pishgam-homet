@@ -3,28 +3,39 @@ import CompanyInfoForm from "../../components/Admin/About/CompanyInfoForm";
 import AdminTeamMemberCard from "../../components/Admin/About/AdminTeamMemberCard";
 import TeamMemberFormModal from "../../components/Admin/About/TeamMemberFormModal";
 import type { TeamMember } from "../../Types/content";
-import manager from "../../assets/manager.webp";
-import member from "../../assets/Portrait_Placeholder.webp";
+import { useSupabaseCrud } from "../../hooks/useSupabaseCrud";
 import Button from "../../components/Ui/Button";
-import useAdminCrud from "../../hooks/useAdminCrud";
+import { getTeamMembersRequest, addTeamMemberRequest, updateTeamMemberRequest, deleteTeamMemberRequest} from "../../services/teamService";
+import { useSiteContent } from "../../hooks/useSiteContent";
+import {SpinnerMini} from "../../components/Ui/Spinner"
 
-const initialTeam: TeamMember[] = [
-  { id: "manager", name: "امیرحسین ملکان", role: "مدیرعامل", image: manager, description: "هدایت مجموعه و توسعه فعالیت‌های هومت با تمرکز بر ارائه راهکارهای نوین.",},
-  { id: "member1", name: "مائده میرباقری", role: "مدیر فنی", image: member, description: "نظارت بر طراحی و اجرای پروژه‌ها و اطمینان از کیفیت فنی خدمات.",},
-  { id: "member2",  name: "محمدمهدی خدابنده لو", role: "مهندس پروژه", image: member, description: "برنامه‌ریزی و نظارت بر اجرای پروژه‌های انرژی خورشیدی.",},
-];
+const sections = ["company-info", "team-intro"];
 
 const AdminAbout = () => {
 const {
     items: team,
+    isLoading: isTeamLoading,
     isModalOpen,
-    setIsModalOpen,
     editingItem: editingMember,
     openAddModal,
     openEditModal,
+    closeModal,
     handleSave,
     handleDelete,
-  } = useAdminCrud<TeamMember>(initialTeam);
+  } = useSupabaseCrud<TeamMember>({
+    getAll: getTeamMembersRequest,
+    add: addTeamMemberRequest,
+    update: updateTeamMemberRequest,
+    remove: deleteTeamMemberRequest,
+  });
+  
+  const { content, isLoading: isContentLoading, saveContent,} = useSiteContent(sections);
+  const isLoading = isTeamLoading || isContentLoading;
+  if (isLoading) return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <SpinnerMini />
+    </div>
+  );
 
   return (
     <div className="space-y-10 mt-4 md:mt-0">
@@ -32,7 +43,7 @@ const {
         <h1 className="text-3xl font-bold text-primary">درباره ما و تیم</h1>
         <p className="mt-2 text-gray-600">ویرایش متن معرفی شرکت و مدیریت اعضای تیم</p>
       </div>
-      <CompanyInfoForm />
+      <CompanyInfoForm content={content} saveContent={saveContent}/>
       <div>
         <div className="md:flex items-center justify-between">
           <h2 className="text-xl font-bold text-primary mb-5">اعضای تیم</h2>
@@ -47,7 +58,7 @@ const {
           ))}
         </div>
       </div>
-      <TeamMemberFormModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSave={handleSave} initialData={editingMember}/>
+      <TeamMemberFormModal isOpen={isModalOpen} onClose={closeModal} onSave={handleSave} initialData={editingMember}/>
     </div>
   );
 };

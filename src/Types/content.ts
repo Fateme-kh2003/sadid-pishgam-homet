@@ -1,5 +1,18 @@
 import type { NavItem } from "./nav";
 
+export type BaseEntity = {
+  id: string;
+};
+
+export type TitleDescriptionContent = {
+  title: string;
+  description: string;
+};
+
+export type ImageContent = {
+  image: string;
+};
+
 export interface IconItem {
   icon: React.ElementType;
   label: string;
@@ -10,28 +23,20 @@ export interface ProjectSummary extends NavItem {
   image: string;
 }
 
-export type ProjectDetail = {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
+export type ProjectDetail =BaseEntity & TitleDescriptionContent & ImageContent & {
   location?: string;
   features: string[];
 };
 
-export interface ServiceItem {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  path: string;
+export interface ServiceItem extends BaseEntity , TitleDescriptionContent{
+  emoji?: string;
+  image: string;
+  features: string[];
 }
 
-export interface TeamMember {
-  id: string;
+export interface TeamMember extends BaseEntity, ImageContent{
   name: string;
   role: string;
-  image: string;
   description: string;
 }
 
@@ -41,3 +46,21 @@ export type ContactInfo = {
   email: string;
   instagram: string;
 };
+
+
+export type AboutHomeContent = TitleDescriptionContent & ImageContent;
+
+export type HeroContent = TitleDescriptionContent & {
+  image1: string;
+  image2: string;
+  image3: string;
+};
+
+export type ServicesIntroContent = TitleDescriptionContent & {
+  subtitle: string;
+};
+
+export type SearchResult = BaseEntity &
+  NavItem & {
+    type: "service" | "project";
+  };

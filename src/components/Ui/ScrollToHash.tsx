@@ -5,22 +5,36 @@ const ScrollToHash = () => {
   const { hash, pathname } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const id = hash.replace("#", "");
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
 
-      const timer = setTimeout(() => {
-        const element = document.getElementById(id);
+    const id = decodeURIComponent(hash.slice(1));
 
-        element?.scrollIntoView({
+    let attempts = 0;
+    const maxAttempts = 50;
+
+    const timer = setInterval(() => {
+      const element = document.getElementById(id);
+
+      if (element) {
+        element.scrollIntoView({
           behavior: "smooth",
           block: "start",
         });
-      }, 100);
 
-      return () => clearTimeout(timer);
-    }
+        clearInterval(timer);
+      }
 
-    window.scrollTo(0, 0);
+      attempts++;
+
+      if (attempts >= maxAttempts) {
+        clearInterval(timer);
+      }
+    }, 100);
+
+    return () => clearInterval(timer);
   }, [pathname, hash]);
 
   return null;

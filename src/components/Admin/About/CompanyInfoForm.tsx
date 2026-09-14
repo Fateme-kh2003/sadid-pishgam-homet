@@ -1,35 +1,49 @@
-import ContentForm from "../Ui/ContentForm";
-import type { FieldConfig } from "../../../Types/forms";
+import ContentForm from "../Ui/ContentForm"
+import type { FieldConfig } from "../../../Types/forms"
 
-const currentTitle = "همراه شما برای انرژی پاک و امنیت پایدار";
-
-const currentText = [
-  "هومت با تمرکز بر ارائه راهکارهای نوین در حوزه انرژی خورشیدی و سیستم‌های امنیتی، فعالیت خود را با هدف ارائه خدمات تخصصی و قابل اعتماد به مشتریان آغاز کرده است.",
-  "ما تلاش می‌کنیم با استفاده از تجهیزات باکیفیت، دانش فنی و اجرای دقیق، راهکارهایی متناسب با نیاز هر پروژه ارائه دهیم. از مشاوره و طراحی اولیه تا تأمین تجهیزات، نصب و پشتیبانی، در کنار مشتریان خود هستیم تا تجربه‌ای مطمئن و رضایت‌بخش ایجاد کنیم.",
-  "باور ما این است که استفاده هوشمندانه از انرژی پاک در کنار راهکارهای نوین امنیتی می‌تواند نقش مهمی در ساخت آینده‌ای پایدارتر و ایمن‌تر داشته باشد.",
-].join("\n\n");
+type FormValue = string | File;
 
 const fields: FieldConfig[] = [
   { name: "title",label: "عنوان", type: "text", required: true,},
-  { name: "text", label: "متن معرفی", type: "textarea", required: true,},
+  { name: "description", label: "توضیحات", type: "textarea", required: true,},
+];
+const emptyValues: Record<string, FormValue> = { title: "", description: "",};
+
+const sections = [
+  { section: "company-info", heading: "متن درباره ما", helperText: "این متن در صفحه‌ی درباره ما نمایش داده می‌شود.", },
+  { section: "team-intro", heading: "متن تیم ما", helperText: "این متن در صفحه‌ی درباره ما بالای اعضای تیم نمایش داده می‌شود.", }, 
 ];
 
-const CompanyInfoForm = () => {
-  const handleSave = (values: Record<string, string>) => {
-    console.log(values);
+type CompanyInfoFormProps = {
+  content: Record<string, Record<string, string> | null>;
+  saveContent: (
+    section: string,
+    data: Record<string, string>
+  ) => Promise<void>;
+};
+
+const CompanyInfoForm = ({content,saveContent,}: CompanyInfoFormProps) => {
+
+  const handleSave = async (section: string, values: Record<string, FormValue>) => {
+    const title =typeof values.title === "string"? values.title: "";
+    const description = typeof values.description === "string" ? values.description : "";
+
+    await saveContent(section, { title, description });
   };
 
   return (
-    <ContentForm
-      heading="متن درباره ما"
-      helperText="این متن در صفحه‌ی درباره ما نمایش داده می‌شود."
-      fields={fields}
-      initialValues={{
-        title: currentTitle,
-        text: currentText,
-      }}
-      onSave={handleSave}
-    />
+    <div className="space-y-6">
+      {sections.map((item) => (
+        <ContentForm 
+          key={item.section} 
+          heading={item.heading} 
+          helperText={item.helperText} 
+          fields={fields} 
+          initialValues={ content[item.section] ?? emptyValues } 
+          onSave={(values) => handleSave(item.section, values) } 
+        /> 
+      ))}
+    </div>
   );
 };
 

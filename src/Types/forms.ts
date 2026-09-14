@@ -1,4 +1,4 @@
-type FieldType = "text" | "textarea" | "select";
+type FieldType = "text" | "textarea" | "file";
 
 export type FieldConfig = {
   name: string;
@@ -6,5 +6,4 @@ export type FieldConfig = {
   type: FieldType;
   placeholder?: string;
   required?: boolean;
-  options?: { label: string; value: string }[];
 };

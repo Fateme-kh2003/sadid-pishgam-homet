@@ -1,32 +1,33 @@
-import { useState } from "react";
-import Button from "../../Ui/Button";
+import ContentForm from "../Ui/ContentForm"; 
+import type { FieldConfig } from "../../../Types/forms";
 
-const currentCopyright = "© 2026 Hoomat. All rights reserved.";
+type FormValue = string | File;
 
-const CopyrightForm = () => {
-  const [copyrightText, setCopyrightText] = useState(currentCopyright);
+const fields: FieldConfig[] = [ { name: "text", label: "متن کپی‌رایت", type: "text", required: true, }, ];
+const emptyValues: Record<string, FormValue> = { text: "", };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // فعلاً بدون بک‌اند — فقط UI
-    console.log({ copyrightText });
+type CopyrightFormProps = {
+  content: Record<string, string> | null;
+  saveContent: (
+    section: string,
+    data: Record<string, string>
+  ) => Promise<void>;
+};
+
+const CopyrightForm = ({ content, saveContent,}: CopyrightFormProps) => {
+  const handleSave = async ( values: Record<string, FormValue> ) => {
+    const text = typeof values.text === "string" ? values.text : ""; 
+    await saveContent("copyright", { text, }); 
   };
 
   return (
-    <div className="rounded-3xl bg-white p-6 shadow-md">
-      <h2 className="text-xl font-bold text-primary">متن کپی‌رایت</h2>
-      <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-4 md:flex-row">
-        <input
-          type="text"
-          value={copyrightText}
-          onChange={(e) => setCopyrightText(e.target.value)}
-          className="w-full rounded-xl border border-gray-200 px-4 py-3 text-right outline-none transition focus:border-secondary"
-        />
-        <Button type="submit" className="whitespace-nowrap rounded-xl bg-primary px-6 py-3 font-semibold text-white transition hover:bg-secondary hover:text-primary">
-          ذخیره
-        </Button>
-      </form>
-    </div>
+    <ContentForm 
+      heading="متن کپی‌رایت" 
+      helperText="این متن در پایین فوتر سایت نمایش داده می‌شود." 
+      fields={fields} 
+      initialValues={content ?? emptyValues} 
+      onSave={handleSave} 
+      />
   );
 };
 

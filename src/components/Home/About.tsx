@@ -23,7 +23,7 @@ const About = () => {
   if (!content) return null;
 
   return ( 
-    <section className="bg-white pb-8 pt-28 md:py-17 mx-auto flex max-w-7xl items-center gap-16  md:px-8">
+    <section className="bg-white pb-8 pt-28 md:py-17 mx-auto flex max-w-7xl items-center gap-16  md:px-0">
       <div className="md:w-1/2 md:text-start text-center">
         <span className="text-secondary text-3xl md:text-4xl font-semibold">چرا هومت؟</span>
         <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary leading-relaxed">

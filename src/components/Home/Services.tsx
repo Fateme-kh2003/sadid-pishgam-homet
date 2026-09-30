@@ -32,7 +32,7 @@ const Services = () => {
 
   return (
     <section className="bg-gray-50 py-14 md:py-10">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl">
         <div className="mb-4 md:mb-16 text-center">
           <span className="text-secondary text-3xl md:text-4xl font-semibold">{intro.title}</span>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-primary">{intro.subtitle}</h2>

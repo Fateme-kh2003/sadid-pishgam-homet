@@ -8,11 +8,14 @@ type FormValue = string | File;
 const sections = ["hero","about-home","services-intro"];
 
 const heroFields: FieldConfig[] = [
-  { name: "title", label: "عنوان (هر خط یک سطر)", type: "textarea",},
-  { name: "description", label: "توضیحات", type: "textarea",},
-  { name: "image1", label: "تصویر اول اسلایدر", type: "file",},
-  { name: "image2", label: "تصویر دوم اسلایدر", type: "file",},
-  { name: "image3", label: "تصویر سوم اسلایدر", type: "file",},
+  { name: "title", label: "عنوان (هر خط یک سطر)", type: "textarea"},
+  { name: "description", label: "توضیحات", type: "textarea"},
+  { name: "image1", label: "تصویر اول اسلایدر", type: "file", column: "desktop"},
+  { name: "image2", label: "تصویر دوم اسلایدر", type: "file", column: "desktop"},
+  { name: "image3", label: "تصویر سوم اسلایدر", type: "file", column: "desktop"},
+  { name: "mobileImage1", label: "تصویر اول اسلایدر", type: "file", column: "mobile"},
+  { name: "mobileImage2", label: "تصویر دوم اسلایدر", type: "file", column: "mobile"},
+  { name: "mobileImage3", label: "تصویر سوم اسلایدر", type: "file", column: "mobile"},
 ];
 const aboutHomeFields: FieldConfig[] = [
   { name: "title", label: "عنوان (هر خط یک سطر)", type: "textarea",},

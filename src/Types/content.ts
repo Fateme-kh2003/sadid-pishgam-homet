@@ -54,6 +54,9 @@ export type HeroContent = TitleDescriptionContent & {
   image1: string;
   image2: string;
   image3: string;
+  mobileImage1: string;
+  mobileImage2: string;
+  mobileImage3: string;
 };
 
 export type ServicesIntroContent = TitleDescriptionContent & {

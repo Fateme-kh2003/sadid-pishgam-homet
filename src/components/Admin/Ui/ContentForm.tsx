@@ -41,6 +41,53 @@ const ContentForm = ({ heading, helperText, fields, initialValues, onSave, submi
     }
   };
 
+  const desktopFields = fields.filter((field) => field.column === "desktop");
+  const mobileFields = fields.filter((field) => field.column === "mobile");
+  const regularFields = fields.filter((field) => !field.column);
+
+  const renderField = (field: FieldConfig) => ( 
+    <div key={field.name}> 
+      <label className="mb-2 block text-sm font-medium text-gray-700"> {field.label} </label> 
+      {field.type === "textarea" && (
+        <textarea 
+         value={getStringValue(field.name)} 
+         onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value, }) } 
+         className={`${inputClass} min-h-24`} 
+         placeholder={field.placeholder} 
+         required={field.required} 
+        /> 
+      )} 
+      {field.type === "file" && ( 
+        <input type="file" accept="image/*" 
+         onChange={(e) => { 
+          const file = e.target.files?.[0]; 
+          if (file) { 
+            setFormData({ 
+              ...formData, 
+              [field.name]: file, 
+            }); 
+          } 
+        }} 
+        className={`${inputClass} cursor-pointer`} 
+        required={field.required} 
+        /> 
+      )} 
+      {field.type !== "textarea" && field.type !== "file" && ( 
+        <input type="text" value={getStringValue(field.name)} 
+         onChange={(e) => 
+           setFormData({ 
+             ...formData, 
+             [field.name]: e.target.value, 
+           }) 
+         } 
+         className={inputClass} 
+         placeholder={field.placeholder} 
+          required={field.required} 
+        /> 
+      )} 
+    </div> 
+  );
+
   return (
     <div className="rounded-3xl bg-white p-5 md:p-5 shadow-md">
       <Button type="button" onClick={() => setIsOpen((prev) => !prev)} className="flex w-full justify-between text-right">
@@ -52,43 +99,21 @@ const ContentForm = ({ heading, helperText, fields, initialValues, onSave, submi
       </Button>
       {isOpen && (
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-          {fields.map((field) => (
-            <div key={field.name}>
-              <label className="mb-2 block text-sm font-medium text-gray-700">{field.label}</label>
-              {field.type === "textarea" && (
-                <textarea
-                  value={getStringValue(field.name)}
-                  onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
-                  className={`${inputClass} min-h-24`}
-                  placeholder={field.placeholder}
-                  required={field.required}
-                />
-              )}
-              {field.type === "file" && (
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {const file = e.target.files?.[0];
-                    if (file) {setFormData({ ...formData, [field.name]: file });}
-                    }}
-                  className={`${inputClass} cursor-pointer`}
-                  required={field.required}
-                />
-              )}
-              {field.type !== "textarea" && field.type !== "file" && (
-                <input
-                  type="text"
-                  value={getStringValue(field.name)}
-                  onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
-                  className={inputClass}
-                  placeholder={field.placeholder}
-                  required={field.required}
-                />
-              )}
-            </div>
-          ))}
-          <Button type="submit" disabled={isSaving} className="rounded-xl bg-primary px-6 py-3 font-semibold text-white transition hover:scale-105 disabled:opacity-60">
-            {isSaving ? <SpinnerMini/> : submitLabel}
+          {regularFields.map(renderField)}
+          {(desktopFields.length > 0 || mobileFields.length > 0) && ( 
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2"> 
+              <div className="rounded-2xl border border-gray-200 p-4"> 
+                <h3 className="mb-4 text-lg font-bold text-primary"> تصاویر دسکتاپ </h3> 
+                <div className="space-y-4"> {desktopFields.map(renderField)} </div> 
+              </div>
+              <div className="rounded-2xl border border-gray-200 p-4"> 
+                <h3 className="mb-4 text-lg font-bold text-primary"> تصاویر موبایل </h3> 
+                <div className="space-y-4"> {mobileFields.map(renderField)} </div> 
+              </div> 
+            </div> 
+          )} 
+          <Button type="submit" disabled={isSaving} className="rounded-xl bg-primary px-6 py-3 font-semibold text-white transition hover:scale-105 disabled:opacity-60" > 
+            {isSaving ? <SpinnerMini /> : submitLabel} 
           </Button>
         </form>
       )}

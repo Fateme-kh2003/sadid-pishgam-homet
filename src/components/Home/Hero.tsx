@@ -19,14 +19,21 @@ const Hero = () => {
   }, []);
 
   if (!content) return null;
-  const images = [content.image1, content.image2, content.image3].filter(Boolean);
+  const images = [
+  {desktop: content.image1,mobile: content.mobileImage1,},
+  {desktop: content.image2,mobile: content.mobileImage2,},
+  {desktop: content.image3,mobile: content.mobileImage3,},
+].filter((image) => image.desktop || image.mobile);
 
   return (
     <section>
       <Swiper modules={[Autoplay, Pagination]} pagination={{ clickable: true }} autoplay={{ delay: 4000 }} loop={true}>
         {images.map((image , index)=>(
-         <SwiperSlide key={image}>
-          <img src={image} alt={`اسلاید ${index + 1}`} className="h-165 md:h-160 w-full object-cover object-[center_30%]"/>
+         <SwiperSlide key={image.desktop}>
+          <picture className="block h-screen w-full">
+            <source media="(max-width: 767px)" srcSet={image.mobile} />
+            <img src={image.desktop} alt={`اسلاید ${index + 1}`} className="h-screen w-full object-cover object-[center_30%]"/>
+          </picture>
           <div className="absolute inset-0 bg-black/20"/>
          </SwiperSlide>
         ))}

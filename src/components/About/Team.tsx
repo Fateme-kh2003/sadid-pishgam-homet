@@ -40,7 +40,7 @@ const Team = () => {
         </h2>
         <Paragraphs text={content.description} className="mx-auto max-w-2xl text-lg leading-8 text-gray-600" firstClassName="mt-5" restClassName="mt-3"/>
       </div>
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-5 grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {teamMembers.map((member) => (
           <div key={member.id} className="overflow-hidden rounded-3xl bg-gray-50 shadow-md">
             <img src={member.image} alt={member.name} className="h-72 w-full object-position"/>
